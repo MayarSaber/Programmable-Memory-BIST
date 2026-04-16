@@ -1,48 +1,77 @@
 # Programmable Memory Built-In Self-Test (MBIST) IP
 
-A **SystemVerilog-based programmable Memory Built-In Self-Test (MBIST)** IP designed around a **dual-port RAM** model. The design is controlled through a **CSR register map** and supports runtime configuration of the test address range, March algorithm selection, background looping, stop-on-fail behavior, and optional signature checking. It was functionally verified in **QuestaSim** using a CSR-driven testbench with fault injection, and synthesized in **Synopsys Design Compiler** for area, timing, and power analysis. :contentReference[oaicite:0]{index=0}
+A **SystemVerilog-based programmable Memory Built-In Self-Test (MBIST)** IP developed around a **dual-port RAM** model. The project focuses on building a configurable and verification-driven MBIST architecture that can be programmed at runtime through a **CSR register map**, execute multiple **March-based memory test algorithms**, capture detailed debug information on failures, and provide synthesis results for implementation analysis. Functional verification was carried out in **QuestaSim** using a CSR-driven testbench with fault injection, while hardware-oriented implementation metrics were obtained using **Synopsys Design Compiler**. :contentReference[oaicite:0]{index=0}
 
-## Overview
+## Why This Project Matters
 
-Embedded memories are a common source of manufacturing defects and in-field reliability issues. This project implements a programmable MBIST IP that can be configured at runtime and used to systematically test a dual-port RAM using well-known March-based memory test algorithms. The design reports pass/fail status, captures first-fail debug information, and generates a compact 16-bit MISR/CRC-style signature of executed memory operations. :contentReference[oaicite:1]{index=1}
+Embedded memories are among the most defect-prone structures in digital systems, both in manufacturing and in-field operation. MBIST is a widely used design-for-testability technique that allows a system to verify memory integrity without relying on external test equipment during normal use. This project demonstrates not only the RTL implementation of an MBIST engine, but also the broader engineering workflow around it: **programmability, verification, fault injection, debug visibility, and synthesis analysis**. :contentReference[oaicite:1]{index=1}
 
-## Features
+Unlike a basic fixed-pattern memory tester, this design is **runtime-configurable**, meaning the tested address range, algorithm choice, background behavior, and fail-handling strategy can all be changed without resynthesis. That makes it closer to how reusable MBIST IP is treated in real SoC design flows. :contentReference[oaicite:2]{index=2}
 
-- Programmable MBIST around a dual-port RAM
-- CSR-controlled runtime configuration
-- Configurable address range
-- Support for multiple March algorithms:
+## Key Highlights
+
+- Designed a **programmable MBIST IP** around a dual-port RAM model
+- Implemented **CSR-controlled runtime configuration** for test setup
+- Supported multiple March-style algorithms:
   - **MATS+**
   - **MATS++**
   - **March C-**
-- Optional multiple background runs
-- Stop-on-fail option
-- Go / no-go status reporting
-- First-fail capture:
+- Added **first-fail debug capture**, including:
   - failing address
   - expected data
   - observed data
-- 16-bit MISR/CRC-style signature compaction
-- Signature checking against an expected signature register
-- Takeover mode for exclusive RAM access during test
-- Directed verification with fault injection in QuestaSim
-- Synthesis flow in Synopsys Design Compiler with area/timing/power reports :contentReference[oaicite:2]{index=2}
+- Generated a **16-bit MISR/CRC-style signature** as a compact fingerprint of test execution
+- Implemented **takeover mode**, where the MBIST temporarily gains exclusive control of the RAM data port during test execution
+- Built a **directed CSR-driven verification testbench** in QuestaSim
+- Demonstrated **fault injection** to validate failure detection and debug reporting
+- Performed **synthesis in Synopsys Design Compiler** and analyzed area, timing, and dynamic power :contentReference[oaicite:3]{index=3}
 
-## Architecture
+## Main Capabilities
 
-The main blocks are:
+This MBIST design supports several practical capabilities typically expected from configurable test IP:
 
-- **Dual-Port RAM (`dp_ram.sv`)**  
-  Memory under test with two independent ports. One port is used for normal or MBIST-driven accesses, while the other can be used by the testbench for initialization and fault injection. :contentReference[oaicite:3]{index=3}
+### 1. Runtime Programmability
+The MBIST is configured through control and status registers rather than hardcoded parameters. This allows changing the address window under test, selecting the algorithm, enabling multiple backgrounds, activating signature checking, and choosing whether the test should stop immediately on failure. :contentReference[oaicite:4]{index=4}
 
-- **MBIST Core (`mbist_core_v3.sv`)**  
-  Executes the selected March algorithm, traverses the configured memory range, compares read data, captures first-fail information, and updates the MISR/CRC-style signature. :contentReference[oaicite:4]{index=4}
+### 2. Multiple Algorithm Support
+The core supports three March-style memory test algorithms:
 
-- **CSR Wrapper (`mbist_csr_wrap_v3.sv`)**  
-  Provides the register programming model and arbitrates access to the RAM data port between the normal master and the MBIST core. During MBIST execution, the wrapper enters takeover mode and blocks normal accesses. :contentReference[oaicite:5]{index=5}
+- **MATS+**
+- **MATS++**
+- **March C-**
 
-- **System Top (`mbist_system_top.sv`)**  
-  Convenience top module integrating the wrapper and RAM together for synthesis or quick top-level simulation. :contentReference[oaicite:6]{index=6}
+These algorithms differ in operation order, complexity, and coverage, and the project demonstrates that the implementation can select among them dynamically at runtime. Verification results show that different algorithms lead to different execution lengths and different signatures, as expected. :contentReference[oaicite:5]{index=5}
+
+### 3. First-Fail Debug Visibility
+On the first detected mismatch, the MBIST captures:
+
+- the failing address
+- the expected value
+- the observed value
+
+This is an important practical feature because it makes the design useful not only for pass/fail testing, but also for **debugging and diagnosis**. :contentReference[oaicite:6]{index=6}
+
+### 4. Signature Compaction
+The MBIST generates a **16-bit MISR/CRC-like signature** using polynomial `0x1021`, compacting the history of memory operations into a lightweight fingerprint. This is useful for regression checking in simulation and for low-overhead hardware-level validation when compared against an expected signature. :contentReference[oaicite:7]{index=7}
+
+### 5. Controlled Memory-Port Arbitration
+During MBIST execution, the wrapper blocks normal accesses and routes the RAM interface to the MBIST core. This “takeover mode” models a realistic SoC integration pattern where test logic temporarily owns the memory interface until the test is complete. :contentReference[oaicite:8]{index=8}
+
+## Architecture Overview
+
+The design is organized into four main modules:
+
+### `dp_ram.sv`
+A dual-port RAM model that acts as the memory under test. It supports byte enables and exposes two independent ports. In the verification environment, one port is used for normal or MBIST-driven access, while the other can be used by the testbench for controlled initialization and fault injection. :contentReference[oaicite:9]{index=9}
+
+### `mbist_core_v3.sv`
+The central MBIST engine. This module executes the selected March algorithm across the configured address range, handles read/write sequencing, compares expected versus observed data, captures the first failure, and updates the signature register. :contentReference[oaicite:10]{index=10}
+
+### `mbist_csr_wrap_v3.sv`
+A CSR wrapper that turns the MBIST core into a programmable peripheral. It implements the register map, generates the start pulse, manages takeover arbitration, and latches status, signature, and error information for software-visible access. :contentReference[oaicite:11]{index=11}
+
+### `mbist_system_top.sv`
+A convenience top-level module that instantiates both the wrapper and the RAM together. This allows end-to-end synthesis and easier top-level experimentation. :contentReference[oaicite:12]{index=12}
 
 ## Project Structure
 
