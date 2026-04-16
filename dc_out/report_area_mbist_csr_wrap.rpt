@@ -1,0 +1,44 @@
+ 
+****************************************
+Report : area
+Design : mbist_csr_wrap
+Version: U-2022.12
+Date   : Sat Jan 17 06:53:31 2026
+****************************************
+
+Library(s) Used:
+
+    pdt2002 (File: /home/s327033/HW1_project/pdt2002.db)
+
+Number of ports:                          429
+Number of nets:                          3555
+Number of cells:                         3263
+Number of combinational cells:           2989
+Number of sequential cells:               273
+Number of macros/black boxes:               0
+Number of buf/inv:                        268
+Number of references:                      14
+
+Combinational area:               6020.000000
+Buf/Inv area:                      268.000000
+Noncombinational area:            2730.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                  8750.000000
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  ---------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-     Noncombi-  Black-
+                                  Total      Total    national   national   boxes   Design
+--------------------------------  ---------  -------  ---------  ---------  ------  -------------------------------------
+mbist_csr_wrap                    8750.0000    100.0  1779.0000  1360.0000  0.0000  mbist_csr_wrap
+u_core                            5611.0000     64.1  4241.0000  1370.0000  0.0000  mbist_core_00000008_00000020_00000010
+--------------------------------  ---------  -------  ---------  ---------  ------  -------------------------------------
+Total                                                 6020.0000  2730.0000  0.0000
+
+1

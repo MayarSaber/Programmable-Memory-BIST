@@ -1,0 +1,73 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : design
+Design : mbist_csr_wrap
+Version: U-2022.12
+Date   : Sat Jan 17 06:53:31 2026
+****************************************
+
+Design allows ideal nets on clock nets.
+
+Library(s) Used:
+
+    pdt2002 (File: /home/s327033/HW1_project/pdt2002.db)
+
+Local Link Library:
+
+    {pdt2002.db}
+
+Flip-Flop Types:
+
+    No flip-flop types specified.
+
+Latch Types:
+
+    No latch types specified.
+
+Operating Conditions:
+
+    No operating conditions specified.
+
+Wire Loading Model:
+
+    Selected automatically from the total cell area.
+
+Name           :   20x20
+Location       :   pdt2002
+Resistance     :   0
+Capacitance    :   1
+Area           :   0
+Slope          :   0.547
+Fanout   Length   Points Average Cap Std Deviation
+--------------------------------------------------------------
+     1     0.86
+
+
+
+Wire Loading Model Mode: top.
+
+Timing Ranges:
+
+    No timing ranges specified.
+
+Pin Input Delays:
+
+    None specified.
+
+Pin Output Delays:
+
+    None specified.
+
+Disabled Timing Arcs:
+
+    No arcs disabled.
+
+Required Licenses:
+
+    DesignWare
+
+Design Parameters:
+
+    None specified.
+1

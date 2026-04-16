@@ -1,0 +1,1121 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 20
+Design : mbist_system_top
+Version: U-2022.12
+Date   : Sat Jan 17 06:32:40 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: 
+Wire Load Model Mode: top
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[5]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[1]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[1]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 r
+  u_wrap/u_core/U336/O (OR_GATE)                          1.10       2.10 r
+  u_wrap/u_core/U447/O (NAND_GATE)                        1.10       3.20 f
+  u_wrap/u_core/U1091/O (INV_GATE)                        1.00       4.20 r
+  u_wrap/u_core/U985/O (OR_GATE)                          1.10       5.30 r
+  u_wrap/u_core/U620/O (OR_GATE)                          1.10       6.40 r
+  u_wrap/u_core/U1037/O (NAND_GATE)                       1.10       7.50 f
+  u_wrap/u_core/U332/O (NAND_GATE)                        1.10       8.60 r
+  u_wrap/u_core/U331/O (OR_GATE)                          1.10       9.70 r
+  u_wrap/u_core/U1039/O (NAND_GATE)                       1.10      10.80 f
+  u_wrap/u_core/U1087/O (INV_GATE)                        1.00      11.80 r
+  u_wrap/u_core/U1079/O (NAND_GATE)                       1.10      12.90 f
+  u_wrap/u_core/U492/O (NAND_GATE)                        1.10      14.00 r
+  u_wrap/u_core/U326/O (OR_GATE)                          1.10      15.10 r
+  u_wrap/u_core/U324/O (AND_GATE)                         1.10      16.20 r
+  u_wrap/u_core/U322/O (INV_GATE)                         1.00      17.20 f
+  u_wrap/u_core/U790/O (AND_GATE)                         1.10      18.30 f
+  u_wrap/u_core/U585/O (NAND_GATE)                        1.10      19.40 r
+  u_wrap/u_core/U193/O (NAND4_GATE)                       1.30      20.70 f
+  u_wrap/u_core/U1092/O (OR_GATE)                         1.10      21.80 f
+  u_wrap/u_core/U243/O (NAND3_GATE)                       1.20      23.00 r
+  u_wrap/u_core/U242/O (NAND4_GATE)                       1.30      24.30 f
+  u_wrap/u_core/U245/O (NAND4_GATE)                       1.30      25.60 r
+  u_wrap/u_core/U725/O (AND_GATE)                         1.10      26.70 r
+  u_wrap/u_core/signature_reg[5]/D (FLIP_FLOP_D_RESET)     0.00     26.70 r
+  data arrival time                                                 26.70
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[5]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.70
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.10
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[12]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[1]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[1]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 f
+  u_wrap/u_core/U336/O (OR_GATE)                          1.10       2.10 f
+  u_wrap/u_core/U447/O (NAND_GATE)                        1.10       3.20 r
+  u_wrap/u_core/U1091/O (INV_GATE)                        1.00       4.20 f
+  u_wrap/u_core/U985/O (OR_GATE)                          1.10       5.30 f
+  u_wrap/u_core/U620/O (OR_GATE)                          1.10       6.40 f
+  u_wrap/u_core/U1037/O (NAND_GATE)                       1.10       7.50 r
+  u_wrap/u_core/U332/O (NAND_GATE)                        1.10       8.60 f
+  u_wrap/u_core/U331/O (OR_GATE)                          1.10       9.70 f
+  u_wrap/u_core/U1039/O (NAND_GATE)                       1.10      10.80 r
+  u_wrap/u_core/U1087/O (INV_GATE)                        1.00      11.80 f
+  u_wrap/u_core/U1079/O (NAND_GATE)                       1.10      12.90 r
+  u_wrap/u_core/U492/O (NAND_GATE)                        1.10      14.00 f
+  u_wrap/u_core/U326/O (OR_GATE)                          1.10      15.10 f
+  u_wrap/u_core/U324/O (AND_GATE)                         1.10      16.20 f
+  u_wrap/u_core/U322/O (INV_GATE)                         1.00      17.20 r
+  u_wrap/u_core/U790/O (AND_GATE)                         1.10      18.30 r
+  u_wrap/u_core/U585/O (NAND_GATE)                        1.10      19.40 f
+  u_wrap/u_core/U193/O (NAND4_GATE)                       1.30      20.70 r
+  u_wrap/u_core/U1092/O (OR_GATE)                         1.10      21.80 r
+  u_wrap/u_core/U243/O (NAND3_GATE)                       1.20      23.00 f
+  u_wrap/u_core/U589/O (NAND3_GATE)                       1.20      24.20 r
+  u_wrap/u_core/U592/O (NAND3_GATE)                       1.20      25.40 f
+  u_wrap/u_core/U591/O (NAND3_GATE)                       1.20      26.60 r
+  u_wrap/u_core/signature_reg[12]/D (FLIP_FLOP_D_RESET)     0.00    26.60 r
+  data arrival time                                                 26.60
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[12]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.60
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.20
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[8]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[1]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[1]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 r
+  u_wrap/u_core/U336/O (OR_GATE)                          1.10       2.10 r
+  u_wrap/u_core/U447/O (NAND_GATE)                        1.10       3.20 f
+  u_wrap/u_core/U998/O (AND_GATE)                         1.10       4.30 f
+  u_wrap/u_core/U498/O (INV_GATE)                         1.00       5.30 r
+  u_wrap/u_core/U373/O (OR_GATE)                          1.10       6.40 r
+  u_wrap/u_core/U371/O (AND_GATE)                         1.10       7.50 r
+  u_wrap/u_core/U184/O (OR_GATE)                          1.10       8.60 r
+  u_wrap/u_core/U182/O (NAND_GATE)                        1.10       9.70 f
+  u_wrap/u_core/U181/O (OR3_GATE)                         1.20      10.90 f
+  u_wrap/u_core/U177/O (NAND_GATE)                        1.10      12.00 r
+  u_wrap/u_core/U594/O (OR_GATE)                          1.10      13.10 r
+  u_wrap/u_core/U1075/O (NAND_GATE)                       1.10      14.20 f
+  u_wrap/u_core/U1077/O (INV_GATE)                        1.00      15.20 r
+  u_wrap/u_core/U1078/O (NAND_GATE)                       1.10      16.30 f
+  u_wrap/u_core/U743/O (AND_GATE)                         1.10      17.40 f
+  u_wrap/u_core/U778/O (OR_GATE)                          1.10      18.50 f
+  u_wrap/u_core/U543/O (AND_GATE)                         1.10      19.60 f
+  u_wrap/u_core/U542/O (OR_GATE)                          1.10      20.70 f
+  u_wrap/u_core/U1541/O (NAND_GATE)                       1.10      21.80 r
+  u_wrap/u_core/U1542/O (NAND_GATE)                       1.10      22.90 f
+  u_wrap/u_core/U749/O (NAND3_GATE)                       1.20      24.10 r
+  u_wrap/u_core/U747/O (NAND4_GATE)                       1.30      25.40 f
+  u_wrap/u_core/U1582/O (NAND3_GATE)                      1.20      26.60 r
+  u_wrap/u_core/signature_reg[8]/D (FLIP_FLOP_D_RESET)     0.00     26.60 r
+  data arrival time                                                 26.60
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[8]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.60
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.20
+
+
+  Startpoint: u_wrap/u_core/signature_reg[13]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[13]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/signature_reg[13]/CK (FLIP_FLOP_D_RESET)     0.00 #     0.00 r
+  u_wrap/u_core/signature_reg[13]/Q (FLIP_FLOP_D_RESET)     1.00     1.00 r
+  u_wrap/u_core/U894/O (INV_GATE)                         1.00       2.00 f
+  u_wrap/u_core/U895/O (NAND_GATE)                        1.10       3.10 r
+  u_wrap/u_core/U898/O (AND_GATE)                         1.10       4.20 r
+  u_wrap/u_core/U775/O (OR_GATE)                          1.10       5.30 r
+  u_wrap/u_core/U484/O (NAND_GATE)                        1.10       6.40 f
+  u_wrap/u_core/U483/O (NAND_GATE)                        1.10       7.50 r
+  u_wrap/u_core/U481/O (NAND_GATE)                        1.10       8.60 f
+  u_wrap/u_core/U773/O (OR_GATE)                          1.10       9.70 f
+  u_wrap/u_core/U480/O (NAND_GATE)                        1.10      10.80 r
+  u_wrap/u_core/U479/O (NAND_GATE)                        1.10      11.90 f
+  u_wrap/u_core/U476/O (NAND3_GATE)                       1.20      13.10 r
+  u_wrap/u_core/U767/O (NAND3_GATE)                       1.20      14.30 f
+  u_wrap/u_core/U474/O (NAND_GATE)                        1.10      15.40 r
+  u_wrap/u_core/U472/O (NAND_GATE)                        1.10      16.50 f
+  u_wrap/u_core/U471/O (NAND_GATE)                        1.10      17.60 r
+  u_wrap/u_core/U770/O (NAND_GATE)                        1.10      18.70 f
+  u_wrap/u_core/U300/O (INV_GATE)                         1.00      19.70 r
+  u_wrap/u_core/U299/O (OR_GATE)                          1.10      20.80 r
+  u_wrap/u_core/U297/O (NAND_GATE)                        1.10      21.90 f
+  u_wrap/u_core/U1058/O (NAND_GATE)                       1.10      23.00 r
+  u_wrap/u_core/U62/O (NAND3_GATE)                        1.20      24.20 f
+  u_wrap/u_core/U61/O (AND_GATE)                          1.10      25.30 f
+  u_wrap/u_core/U52/O (NAND3_GATE)                        1.20      26.50 r
+  u_wrap/u_core/signature_reg[13]/D (FLIP_FLOP_D_RESET)     0.00    26.50 r
+  data arrival time                                                 26.50
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[13]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.50
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.30
+
+
+  Startpoint: u_wrap/u_core/signature_reg[13]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[6]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/signature_reg[13]/CK (FLIP_FLOP_D_RESET)     0.00 #     0.00 r
+  u_wrap/u_core/signature_reg[13]/Q (FLIP_FLOP_D_RESET)     1.00     1.00 f
+  u_wrap/u_core/U894/O (INV_GATE)                         1.00       2.00 r
+  u_wrap/u_core/U895/O (NAND_GATE)                        1.10       3.10 f
+  u_wrap/u_core/U898/O (AND_GATE)                         1.10       4.20 f
+  u_wrap/u_core/U775/O (OR_GATE)                          1.10       5.30 f
+  u_wrap/u_core/U484/O (NAND_GATE)                        1.10       6.40 r
+  u_wrap/u_core/U483/O (NAND_GATE)                        1.10       7.50 f
+  u_wrap/u_core/U481/O (NAND_GATE)                        1.10       8.60 r
+  u_wrap/u_core/U773/O (OR_GATE)                          1.10       9.70 r
+  u_wrap/u_core/U480/O (NAND_GATE)                        1.10      10.80 f
+  u_wrap/u_core/U479/O (NAND_GATE)                        1.10      11.90 r
+  u_wrap/u_core/U476/O (NAND3_GATE)                       1.20      13.10 f
+  u_wrap/u_core/U767/O (NAND3_GATE)                       1.20      14.30 r
+  u_wrap/u_core/U474/O (NAND_GATE)                        1.10      15.40 f
+  u_wrap/u_core/U472/O (NAND_GATE)                        1.10      16.50 r
+  u_wrap/u_core/U471/O (NAND_GATE)                        1.10      17.60 f
+  u_wrap/u_core/U770/O (NAND_GATE)                        1.10      18.70 r
+  u_wrap/u_core/U300/O (INV_GATE)                         1.00      19.70 f
+  u_wrap/u_core/U299/O (OR_GATE)                          1.10      20.80 f
+  u_wrap/u_core/U297/O (NAND_GATE)                        1.10      21.90 r
+  u_wrap/u_core/U488/O (NAND_GATE)                        1.10      23.00 f
+  u_wrap/u_core/U486/O (AND_GATE)                         1.10      24.10 f
+  u_wrap/u_core/U70/O (AND_GATE)                          1.10      25.20 f
+  u_wrap/u_core/U64/O (NAND3_GATE)                        1.20      26.40 r
+  u_wrap/u_core/signature_reg[6]/D (FLIP_FLOP_D_RESET)     0.00     26.40 r
+  data arrival time                                                 26.40
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[6]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.40
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.40
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[3]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[1]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[1]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 r
+  u_wrap/u_core/U336/O (OR_GATE)                          1.10       2.10 r
+  u_wrap/u_core/U447/O (NAND_GATE)                        1.10       3.20 f
+  u_wrap/u_core/U998/O (AND_GATE)                         1.10       4.30 f
+  u_wrap/u_core/U498/O (INV_GATE)                         1.00       5.30 r
+  u_wrap/u_core/U373/O (OR_GATE)                          1.10       6.40 r
+  u_wrap/u_core/U371/O (AND_GATE)                         1.10       7.50 r
+  u_wrap/u_core/U184/O (OR_GATE)                          1.10       8.60 r
+  u_wrap/u_core/U182/O (NAND_GATE)                        1.10       9.70 f
+  u_wrap/u_core/U181/O (OR3_GATE)                         1.20      10.90 f
+  u_wrap/u_core/U177/O (NAND_GATE)                        1.10      12.00 r
+  u_wrap/u_core/U594/O (OR_GATE)                          1.10      13.10 r
+  u_wrap/u_core/U1075/O (NAND_GATE)                       1.10      14.20 f
+  u_wrap/u_core/U1077/O (INV_GATE)                        1.00      15.20 r
+  u_wrap/u_core/U1078/O (NAND_GATE)                       1.10      16.30 f
+  u_wrap/u_core/U743/O (AND_GATE)                         1.10      17.40 f
+  u_wrap/u_core/U778/O (OR_GATE)                          1.10      18.50 f
+  u_wrap/u_core/U543/O (AND_GATE)                         1.10      19.60 f
+  u_wrap/u_core/U542/O (OR_GATE)                          1.10      20.70 f
+  u_wrap/u_core/U1541/O (NAND_GATE)                       1.10      21.80 r
+  u_wrap/u_core/U1542/O (NAND_GATE)                       1.10      22.90 f
+  u_wrap/u_core/U752/O (NAND_GATE)                        1.10      24.00 r
+  u_wrap/u_core/U1543/O (NAND_GATE)                       1.10      25.10 f
+  u_wrap/u_core/U1551/O (NAND3_GATE)                      1.20      26.30 r
+  u_wrap/u_core/signature_reg[3]/D (FLIP_FLOP_D_RESET)     0.00     26.30 r
+  data arrival time                                                 26.30
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[3]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.30
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.50
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[1]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[1]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 f
+  u_wrap/u_core/U336/O (OR_GATE)                          1.10       2.10 f
+  u_wrap/u_core/U447/O (NAND_GATE)                        1.10       3.20 r
+  u_wrap/u_core/U998/O (AND_GATE)                         1.10       4.30 r
+  u_wrap/u_core/U498/O (INV_GATE)                         1.00       5.30 f
+  u_wrap/u_core/U373/O (OR_GATE)                          1.10       6.40 f
+  u_wrap/u_core/U371/O (AND_GATE)                         1.10       7.50 f
+  u_wrap/u_core/U184/O (OR_GATE)                          1.10       8.60 f
+  u_wrap/u_core/U182/O (NAND_GATE)                        1.10       9.70 r
+  u_wrap/u_core/U181/O (OR3_GATE)                         1.20      10.90 r
+  u_wrap/u_core/U177/O (NAND_GATE)                        1.10      12.00 f
+  u_wrap/u_core/U594/O (OR_GATE)                          1.10      13.10 f
+  u_wrap/u_core/U1075/O (NAND_GATE)                       1.10      14.20 r
+  u_wrap/u_core/U1077/O (INV_GATE)                        1.00      15.20 f
+  u_wrap/u_core/U1078/O (NAND_GATE)                       1.10      16.30 r
+  u_wrap/u_core/U743/O (AND_GATE)                         1.10      17.40 r
+  u_wrap/u_core/U778/O (OR_GATE)                          1.10      18.50 r
+  u_wrap/u_core/U543/O (AND_GATE)                         1.10      19.60 r
+  u_wrap/u_core/U1081/O (NAND_GATE)                       1.10      20.70 f
+  u_wrap/u_core/U146/O (AND_GATE)                         1.10      21.80 f
+  u_wrap/u_core/U140/O (INV_GATE)                         1.00      22.80 r
+  u_wrap/u_core/U145/O (OR_GATE)                          1.10      23.90 r
+  u_wrap/u_core/U141/O (NAND4_GATE)                       1.30      25.20 f
+  u_wrap/u_core/U278/O (NAND_GATE)                        1.10      26.30 r
+  u_wrap/u_core/signature_reg[15]/D (FLIP_FLOP_D_RESET)     0.00    26.30 r
+  data arrival time                                                 26.30
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[15]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.30
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.50
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[4]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[1]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[1]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 f
+  u_wrap/u_core/U336/O (OR_GATE)                          1.10       2.10 f
+  u_wrap/u_core/U447/O (NAND_GATE)                        1.10       3.20 r
+  u_wrap/u_core/U1091/O (INV_GATE)                        1.00       4.20 f
+  u_wrap/u_core/U985/O (OR_GATE)                          1.10       5.30 f
+  u_wrap/u_core/U620/O (OR_GATE)                          1.10       6.40 f
+  u_wrap/u_core/U1037/O (NAND_GATE)                       1.10       7.50 r
+  u_wrap/u_core/U332/O (NAND_GATE)                        1.10       8.60 f
+  u_wrap/u_core/U331/O (OR_GATE)                          1.10       9.70 f
+  u_wrap/u_core/U1039/O (NAND_GATE)                       1.10      10.80 r
+  u_wrap/u_core/U1087/O (INV_GATE)                        1.00      11.80 f
+  u_wrap/u_core/U1079/O (NAND_GATE)                       1.10      12.90 r
+  u_wrap/u_core/U492/O (NAND_GATE)                        1.10      14.00 f
+  u_wrap/u_core/U326/O (OR_GATE)                          1.10      15.10 f
+  u_wrap/u_core/U324/O (AND_GATE)                         1.10      16.20 f
+  u_wrap/u_core/U322/O (INV_GATE)                         1.00      17.20 r
+  u_wrap/u_core/U790/O (AND_GATE)                         1.10      18.30 r
+  u_wrap/u_core/U585/O (NAND_GATE)                        1.10      19.40 f
+  u_wrap/u_core/U193/O (NAND4_GATE)                       1.30      20.70 r
+  u_wrap/u_core/U192/O (INV_GATE)                         1.00      21.70 f
+  u_wrap/u_core/U1566/O (NAND_GATE)                       1.10      22.80 r
+  u_wrap/u_core/U1567/O (NAND_GATE)                       1.10      23.90 f
+  u_wrap/u_core/U1568/O (OR_GATE)                         1.10      25.00 f
+  u_wrap/u_core/U1571/O (NAND3_GATE)                      1.20      26.20 r
+  u_wrap/u_core/signature_reg[4]/D (FLIP_FLOP_D_RESET)     0.00     26.20 r
+  data arrival time                                                 26.20
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[4]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.20
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.60
+
+
+  Startpoint: u_wrap/u_core/elem_idx_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[9]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/elem_idx_reg[0]/CK (FLIP_FLOP_D_RESET)     0.00 #     0.00 r
+  u_wrap/u_core/elem_idx_reg[0]/Q (FLIP_FLOP_D_RESET)     1.00       1.00 f
+  u_wrap/u_core/U831/O (INV_GATE)                         1.00       2.00 r
+  u_wrap/u_core/U89/O (AND_GATE)                          1.10       3.10 r
+  u_wrap/u_core/U87/O (INV_GATE)                          1.00       4.10 f
+  u_wrap/u_core/U86/O (NAND_GATE)                         1.10       5.20 r
+  u_wrap/u_core/U83/O (NAND3_GATE)                        1.20       6.40 f
+  u_wrap/u_core/U133/O (NAND4_GATE)                       1.30       7.70 r
+  u_wrap/u_core/U568/O (NAND_GATE)                        1.10       8.80 f
+  u_wrap/u_core/U566/O (NAND3_GATE)                       1.20      10.00 r
+  u_wrap/u_core/U563/O (NAND3_GATE)                       1.20      11.20 f
+  u_wrap/u_core/U728/O (OR_GATE)                          1.10      12.30 f
+  u_wrap/u_core/U349/O (NAND3_GATE)                       1.20      13.50 r
+  u_wrap/u_core/U347/O (NAND4_GATE)                       1.30      14.80 f
+  u_wrap/u_core/U351/O (NAND3_GATE)                       1.20      16.00 r
+  u_wrap/u_core/U811/O (NAND_GATE)                        1.10      17.10 f
+  u_wrap/u_core/U810/O (NAND_GATE)                        1.10      18.20 r
+  u_wrap/u_core/U353/O (OR_GATE)                          1.10      19.30 r
+  u_wrap/u_core/U91/O (NAND_GATE)                         1.10      20.40 f
+  u_wrap/u_core/U750/O (INV_GATE)                         1.00      21.40 r
+  u_wrap/u_core/U561/O (NAND_GATE)                        1.10      22.50 f
+  u_wrap/u_core/U559/O (AND3_GATE)                        1.20      23.70 f
+  u_wrap/u_core/U557/O (OR4_GATE)                         1.30      25.00 f
+  u_wrap/u_core/U1576/O (NAND3_GATE)                      1.20      26.20 r
+  u_wrap/u_core/signature_reg[9]/D (FLIP_FLOP_D_RESET)     0.00     26.20 r
+  data arrival time                                                 26.20
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[9]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.20
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.60
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[2]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[14]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[2]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[2]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 r
+  u_wrap/u_core/U619/O (INV_GATE)                         1.00       2.00 f
+  u_wrap/u_core/U216/O (AND3_GATE)                        1.20       3.20 f
+  u_wrap/u_core/U50/O (INV_GATE)                          1.00       4.20 r
+  u_wrap/u_core/U49/O (AND4_GATE)                         1.30       5.50 r
+  u_wrap/u_core/U766/O (OR_GATE)                          1.10       6.60 r
+  u_wrap/u_core/U701/O (NAND_GATE)                        1.10       7.70 f
+  u_wrap/u_core/U696/O (NAND_GATE)                        1.10       8.80 r
+  u_wrap/u_core/U79/O (NAND_GATE)                         1.10       9.90 f
+  u_wrap/u_core/U77/O (NAND_GATE)                         1.10      11.00 r
+  u_wrap/u_core/U76/O (OR3_GATE)                          1.20      12.20 r
+  u_wrap/u_core/U213/O (NAND3_GATE)                       1.20      13.40 f
+  u_wrap/u_core/U210/O (NAND3_GATE)                       1.20      14.60 r
+  u_wrap/u_core/U708/O (NAND_GATE)                        1.10      15.70 f
+  u_wrap/u_core/U703/O (NAND_GATE)                        1.10      16.80 r
+  u_wrap/u_core/U1514/O (OR_GATE)                         1.10      17.90 r
+  u_wrap/u_core/U507/O (NAND_GATE)                        1.10      19.00 f
+  u_wrap/u_core/U503/O (NAND3_GATE)                       1.20      20.20 r
+  u_wrap/u_core/U500/O (NAND3_GATE)                       1.20      21.40 f
+  u_wrap/u_core/U257/O (OR_GATE)                          1.10      22.50 f
+  u_wrap/u_core/U254/O (NAND3_GATE)                       1.20      23.70 r
+  u_wrap/u_core/U252/O (NAND4_GATE)                       1.30      25.00 f
+  u_wrap/u_core/U251/O (NAND_GATE)                        1.10      26.10 r
+  u_wrap/u_core/signature_reg[14]/D (FLIP_FLOP_D_RESET)     0.00    26.10 r
+  data arrival time                                                 26.10
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[14]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.10
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.70
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[2]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[2]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[2]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 r
+  u_wrap/u_core/U619/O (INV_GATE)                         1.00       2.00 f
+  u_wrap/u_core/U216/O (AND3_GATE)                        1.20       3.20 f
+  u_wrap/u_core/U50/O (INV_GATE)                          1.00       4.20 r
+  u_wrap/u_core/U49/O (AND4_GATE)                         1.30       5.50 r
+  u_wrap/u_core/U766/O (OR_GATE)                          1.10       6.60 r
+  u_wrap/u_core/U701/O (NAND_GATE)                        1.10       7.70 f
+  u_wrap/u_core/U696/O (NAND_GATE)                        1.10       8.80 r
+  u_wrap/u_core/U79/O (NAND_GATE)                         1.10       9.90 f
+  u_wrap/u_core/U77/O (NAND_GATE)                         1.10      11.00 r
+  u_wrap/u_core/U76/O (OR3_GATE)                          1.20      12.20 r
+  u_wrap/u_core/U72/O (AND_GATE)                          1.10      13.30 r
+  u_wrap/u_core/U209/O (OR_GATE)                          1.10      14.40 r
+  u_wrap/u_core/U574/O (NAND3_GATE)                       1.20      15.60 f
+  u_wrap/u_core/U571/O (NAND3_GATE)                       1.20      16.80 r
+  u_wrap/u_core/U988/O (OR_GATE)                          1.10      17.90 r
+  u_wrap/u_core/U393/O (NAND3_GATE)                       1.20      19.10 f
+  u_wrap/u_core/U391/O (NAND4_GATE)                       1.30      20.40 r
+  u_wrap/u_core/U397/O (NAND3_GATE)                       1.20      21.60 f
+  u_wrap/u_core/U60/O (NAND_GATE)                         1.10      22.70 r
+  u_wrap/u_core/U58/O (NAND_GATE)                         1.10      23.80 f
+  u_wrap/u_core/U389/O (OR_GATE)                          1.10      24.90 f
+  u_wrap/u_core/U1587/O (NAND3_GATE)                      1.20      26.10 r
+  u_wrap/u_core/signature_reg[1]/D (FLIP_FLOP_D_RESET)     0.00     26.10 r
+  data arrival time                                                 26.10
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[1]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.10
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.70
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[2]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[2]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[2]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 f
+  u_wrap/u_core/U619/O (INV_GATE)                         1.00       2.00 r
+  u_wrap/u_core/U216/O (AND3_GATE)                        1.20       3.20 r
+  u_wrap/u_core/U50/O (INV_GATE)                          1.00       4.20 f
+  u_wrap/u_core/U49/O (AND4_GATE)                         1.30       5.50 f
+  u_wrap/u_core/U766/O (OR_GATE)                          1.10       6.60 f
+  u_wrap/u_core/U701/O (NAND_GATE)                        1.10       7.70 r
+  u_wrap/u_core/U696/O (NAND_GATE)                        1.10       8.80 f
+  u_wrap/u_core/U79/O (NAND_GATE)                         1.10       9.90 r
+  u_wrap/u_core/U77/O (NAND_GATE)                         1.10      11.00 f
+  u_wrap/u_core/U76/O (OR3_GATE)                          1.20      12.20 f
+  u_wrap/u_core/U213/O (NAND3_GATE)                       1.20      13.40 r
+  u_wrap/u_core/U210/O (NAND3_GATE)                       1.20      14.60 f
+  u_wrap/u_core/U708/O (NAND_GATE)                        1.10      15.70 r
+  u_wrap/u_core/U703/O (NAND_GATE)                        1.10      16.80 f
+  u_wrap/u_core/U1514/O (OR_GATE)                         1.10      17.90 f
+  u_wrap/u_core/U507/O (NAND_GATE)                        1.10      19.00 r
+  u_wrap/u_core/U503/O (NAND3_GATE)                       1.20      20.20 f
+  u_wrap/u_core/U500/O (NAND3_GATE)                       1.20      21.40 r
+  u_wrap/u_core/U1583/O (INV_GATE)                        1.00      22.40 f
+  u_wrap/u_core/U614/O (NAND_GATE)                        1.10      23.50 r
+  u_wrap/u_core/U612/O (NAND3_GATE)                       1.20      24.70 f
+  u_wrap/u_core/U611/O (NAND4_GATE)                       1.30      26.00 r
+  u_wrap/u_core/signature_reg[7]/D (FLIP_FLOP_D_RESET)     0.00     26.00 r
+  data arrival time                                                 26.00
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[7]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -26.00
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.80
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[2]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[10]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[2]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[2]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 r
+  u_wrap/u_core/U619/O (INV_GATE)                         1.00       2.00 f
+  u_wrap/u_core/U216/O (AND3_GATE)                        1.20       3.20 f
+  u_wrap/u_core/U50/O (INV_GATE)                          1.00       4.20 r
+  u_wrap/u_core/U49/O (AND4_GATE)                         1.30       5.50 r
+  u_wrap/u_core/U766/O (OR_GATE)                          1.10       6.60 r
+  u_wrap/u_core/U701/O (NAND_GATE)                        1.10       7.70 f
+  u_wrap/u_core/U696/O (NAND_GATE)                        1.10       8.80 r
+  u_wrap/u_core/U79/O (NAND_GATE)                         1.10       9.90 f
+  u_wrap/u_core/U77/O (NAND_GATE)                         1.10      11.00 r
+  u_wrap/u_core/U76/O (OR3_GATE)                          1.20      12.20 r
+  u_wrap/u_core/U72/O (AND_GATE)                          1.10      13.30 r
+  u_wrap/u_core/U209/O (OR_GATE)                          1.10      14.40 r
+  u_wrap/u_core/U574/O (NAND3_GATE)                       1.20      15.60 f
+  u_wrap/u_core/U571/O (NAND3_GATE)                       1.20      16.80 r
+  u_wrap/u_core/U988/O (OR_GATE)                          1.10      17.90 r
+  u_wrap/u_core/U310/O (NAND_GATE)                        1.10      19.00 f
+  u_wrap/u_core/U308/O (NAND3_GATE)                       1.20      20.20 r
+  u_wrap/u_core/U307/O (AND_GATE)                         1.10      21.30 r
+  u_wrap/u_core/U240/O (INV_GATE)                         1.00      22.30 f
+  u_wrap/u_core/U1552/O (NAND_GATE)                       1.10      23.40 r
+  u_wrap/u_core/U1555/O (NAND3_GATE)                      1.20      24.60 f
+  u_wrap/u_core/U1561/O (NAND3_GATE)                      1.20      25.80 r
+  u_wrap/u_core/signature_reg[10]/D (FLIP_FLOP_D_RESET)     0.00    25.80 r
+  data arrival time                                                 25.80
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[10]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -25.80
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.00
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[1]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[1]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 r
+  u_wrap/u_core/U336/O (OR_GATE)                          1.10       2.10 r
+  u_wrap/u_core/U447/O (NAND_GATE)                        1.10       3.20 f
+  u_wrap/u_core/U1091/O (INV_GATE)                        1.00       4.20 r
+  u_wrap/u_core/U985/O (OR_GATE)                          1.10       5.30 r
+  u_wrap/u_core/U620/O (OR_GATE)                          1.10       6.40 r
+  u_wrap/u_core/U1037/O (NAND_GATE)                       1.10       7.50 f
+  u_wrap/u_core/U332/O (NAND_GATE)                        1.10       8.60 r
+  u_wrap/u_core/U331/O (OR_GATE)                          1.10       9.70 r
+  u_wrap/u_core/U1039/O (NAND_GATE)                       1.10      10.80 f
+  u_wrap/u_core/U1087/O (INV_GATE)                        1.00      11.80 r
+  u_wrap/u_core/U1079/O (NAND_GATE)                       1.10      12.90 f
+  u_wrap/u_core/U492/O (NAND_GATE)                        1.10      14.00 r
+  u_wrap/u_core/U326/O (OR_GATE)                          1.10      15.10 r
+  u_wrap/u_core/U324/O (AND_GATE)                         1.10      16.20 r
+  u_wrap/u_core/U322/O (INV_GATE)                         1.00      17.20 f
+  u_wrap/u_core/U790/O (AND_GATE)                         1.10      18.30 f
+  u_wrap/u_core/U585/O (NAND_GATE)                        1.10      19.40 r
+  u_wrap/u_core/U193/O (NAND4_GATE)                       1.30      20.70 f
+  u_wrap/u_core/U1092/O (OR_GATE)                         1.10      21.80 f
+  u_wrap/u_core/U243/O (NAND3_GATE)                       1.20      23.00 r
+  u_wrap/u_core/U590/O (AND4_GATE)                        1.30      24.30 r
+  u_wrap/u_core/U1606/O (OR3_GATE)                        1.20      25.50 r
+  u_wrap/u_core/signature_reg[0]/D (FLIP_FLOP_D_RESET)     0.00     25.50 r
+  data arrival time                                                 25.50
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[0]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -25.50
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.30
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[2]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[11]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[2]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[2]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 r
+  u_wrap/u_core/U619/O (INV_GATE)                         1.00       2.00 f
+  u_wrap/u_core/U216/O (AND3_GATE)                        1.20       3.20 f
+  u_wrap/u_core/U218/O (NOR_GATE)                         1.10       4.30 r
+  u_wrap/u_core/U217/O (OR_GATE)                          1.10       5.40 r
+  u_wrap/u_core/U513/O (AND_GATE)                         1.10       6.50 r
+  u_wrap/u_core/U675/O (OR_GATE)                          1.10       7.60 r
+  u_wrap/u_core/U511/O (AND_GATE)                         1.10       8.70 r
+  u_wrap/u_core/U510/O (NAND_GATE)                        1.10       9.80 f
+  u_wrap/u_core/U208/O (NAND_GATE)                        1.10      10.90 r
+  u_wrap/u_core/U207/O (OR_GATE)                          1.10      12.00 r
+  u_wrap/u_core/U205/O (NAND_GATE)                        1.10      13.10 f
+  u_wrap/u_core/U204/O (INV_GATE)                         1.00      14.10 r
+  u_wrap/u_core/U1593/O (NAND_GATE)                       1.10      15.20 f
+  u_wrap/u_core/U668/O (NAND3_GATE)                       1.20      16.40 r
+  u_wrap/u_core/U665/O (NAND3_GATE)                       1.20      17.60 f
+  u_wrap/u_core/U669/O (INV_GATE)                         1.00      18.60 r
+  u_wrap/u_core/U1595/O (NAND_GATE)                       1.10      19.70 f
+  u_wrap/u_core/U1596/O (NAND_GATE)                       1.10      20.80 r
+  u_wrap/u_core/U1598/O (INV_GATE)                        1.00      21.80 f
+  u_wrap/u_core/U385/O (NAND_GATE)                        1.10      22.90 r
+  u_wrap/u_core/U383/O (NAND3_GATE)                       1.20      24.10 f
+  u_wrap/u_core/U382/O (NAND4_GATE)                       1.30      25.40 r
+  u_wrap/u_core/signature_reg[11]/D (FLIP_FLOP_D_RESET)     0.00    25.40 r
+  data arrival time                                                 25.40
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[11]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -25.40
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.40
+
+
+  Startpoint: u_wrap/u_core/bg_idx_reg[2]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/signature_reg[2]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/bg_idx_reg[2]/CK (FLIP_FLOP_D_RESET)      0.00 #     0.00 r
+  u_wrap/u_core/bg_idx_reg[2]/Q (FLIP_FLOP_D_RESET)       1.00       1.00 f
+  u_wrap/u_core/U619/O (INV_GATE)                         1.00       2.00 r
+  u_wrap/u_core/U216/O (AND3_GATE)                        1.20       3.20 r
+  u_wrap/u_core/U50/O (INV_GATE)                          1.00       4.20 f
+  u_wrap/u_core/U49/O (AND4_GATE)                         1.30       5.50 f
+  u_wrap/u_core/U766/O (OR_GATE)                          1.10       6.60 f
+  u_wrap/u_core/U701/O (NAND_GATE)                        1.10       7.70 r
+  u_wrap/u_core/U696/O (NAND_GATE)                        1.10       8.80 f
+  u_wrap/u_core/U79/O (NAND_GATE)                         1.10       9.90 r
+  u_wrap/u_core/U77/O (NAND_GATE)                         1.10      11.00 f
+  u_wrap/u_core/U76/O (OR3_GATE)                          1.20      12.20 f
+  u_wrap/u_core/U213/O (NAND3_GATE)                       1.20      13.40 r
+  u_wrap/u_core/U210/O (NAND3_GATE)                       1.20      14.60 f
+  u_wrap/u_core/U708/O (NAND_GATE)                        1.10      15.70 r
+  u_wrap/u_core/U703/O (NAND_GATE)                        1.10      16.80 f
+  u_wrap/u_core/U1514/O (OR_GATE)                         1.10      17.90 f
+  u_wrap/u_core/U507/O (NAND_GATE)                        1.10      19.00 r
+  u_wrap/u_core/U503/O (NAND3_GATE)                       1.20      20.20 f
+  u_wrap/u_core/U500/O (NAND3_GATE)                       1.20      21.40 r
+  u_wrap/u_core/U1533/O (NAND_GATE)                       1.10      22.50 f
+  u_wrap/u_core/U1536/O (NAND3_GATE)                      1.20      23.70 r
+  u_wrap/u_core/signature_reg[2]/D (FLIP_FLOP_D_RESET)     0.00     23.70 r
+  data arrival time                                                 23.70
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/signature_reg[2]/CK (FLIP_FLOP_D_RESET)     0.00    26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -23.70
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.10
+
+
+  Startpoint: u_wrap/u_core/cur_addr_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_wrap/u_core/cur_addr_reg[7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/cur_addr_reg[5]/CK (FLIP_FLOP_D_RESET)     0.00 #     0.00 r
+  u_wrap/u_core/cur_addr_reg[5]/Q (FLIP_FLOP_D_RESET)     1.00       1.00 f
+  u_wrap/u_core/U904/O (INV_GATE)                         1.00       2.00 r
+  u_wrap/u_core/U1166/O (NAND_GATE)                       1.10       3.10 f
+  u_wrap/u_core/U1169/O (NAND_GATE)                       1.10       4.20 r
+  u_wrap/u_core/U1183/O (OR4_GATE)                        1.30       5.50 r
+  u_wrap/u_core/U1188/O (OR3_GATE)                        1.20       6.70 r
+  u_wrap/u_core/U1191/O (AND_GATE)                        1.10       7.80 r
+  u_wrap/u_core/U112/O (NAND_GATE)                        1.10       8.90 f
+  u_wrap/u_core/U116/O (NAND_GATE)                        1.10      10.00 r
+  u_wrap/u_core/U114/O (NAND_GATE)                        1.10      11.10 f
+  u_wrap/u_core/U1441/O (AND_GATE)                        1.10      12.20 f
+  u_wrap/u_core/U1442/O (OR_GATE)                         1.10      13.30 f
+  u_wrap/u_core/U1447/O (AND_GATE)                        1.10      14.40 f
+  u_wrap/u_core/U119/O (NAND_GATE)                        1.10      15.50 r
+  u_wrap/u_core/U118/O (NAND_GATE)                        1.10      16.60 f
+  u_wrap/u_core/U122/O (AND_GATE)                         1.10      17.70 f
+  u_wrap/u_core/U1499/O (OR_GATE)                         1.10      18.80 f
+  u_wrap/u_core/U128/O (INV_GATE)                         1.00      19.80 r
+  u_wrap/u_core/U124/O (NAND_GATE)                        1.10      20.90 f
+  u_wrap/u_core/U123/O (NAND_GATE)                        1.10      22.00 r
+  u_wrap/u_core/U1508/O (OR3_GATE)                        1.20      23.20 r
+  u_wrap/u_core/cur_addr_reg[7]/D (FLIP_FLOP_D_RESET)     0.00      23.20 r
+  data arrival time                                                 23.20
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_wrap/u_core/cur_addr_reg[7]/CK (FLIP_FLOP_D_RESET)     0.00     26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -23.20
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.60
+
+
+  Startpoint: u_wrap/u_core/elem_idx_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_ram/mem_reg[0][3]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/elem_idx_reg[0]/CK (FLIP_FLOP_D_RESET)     0.00 #     0.00 r
+  u_wrap/u_core/elem_idx_reg[0]/Q (FLIP_FLOP_D_RESET)     1.00       1.00 r
+  u_wrap/u_core/U831/O (INV_GATE)                         1.00       2.00 f
+  u_wrap/u_core/U89/O (AND_GATE)                          1.10       3.10 f
+  u_wrap/u_core/U87/O (INV_GATE)                          1.00       4.10 r
+  u_wrap/u_core/U836/O (AND_GATE)                         1.10       5.20 r
+  u_wrap/u_core/U837/O (OR_GATE)                          1.10       6.30 r
+  u_wrap/u_core/U838/O (NAND_GATE)                        1.10       7.40 f
+  u_wrap/u_core/U839/O (NAND_GATE)                        1.10       8.50 r
+  u_wrap/u_core/U840/O (AND_GATE)                         1.10       9.60 r
+  u_wrap/u_core/U841/O (OR_GATE)                          1.10      10.70 r
+  u_wrap/u_core/U842/O (AND_GATE)                         1.10      11.80 r
+  u_wrap/u_core/U1607/O (AND_GATE)                        1.10      12.90 r
+  u_wrap/u_core/U1609/O (AND_GATE)                        1.10      14.00 r
+  u_wrap/u_core/U1617/O (INV_GATE)                        1.00      15.00 f
+  u_wrap/u_core/U1618/O (OR_GATE)                         1.10      16.10 f
+  u_wrap/u_core/U1620/O (NAND_GATE)                       1.10      17.20 r
+  u_wrap/u_core/wdata_b[3] (mbist_core_00000008_00000020_00000010)     0.00    17.20 r
+  U1037/O (NAND_GATE)                                     1.10      18.30 f
+  U1039/O (NAND_GATE)                                     1.10      19.40 r
+  u_ram/wdata_b_i[3] (dp_ram_00000008_00000080)           0.00      19.40 r
+  u_ram/U8672/O (INV_GATE)                                1.00      20.40 f
+  u_ram/U8673/O (OR_GATE)                                 1.10      21.50 f
+  u_ram/U8675/O (NAND_GATE)                               1.10      22.60 r
+  u_ram/mem_reg[0][3]/D (FLIP_FLOP_D)                     0.00      22.60 r
+  data arrival time                                                 22.60
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_ram/mem_reg[0][3]/CK (FLIP_FLOP_D)                    0.00      26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -22.60
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.20
+
+
+  Startpoint: u_wrap/u_core/elem_idx_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_ram/mem_reg[4][3]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/elem_idx_reg[0]/CK (FLIP_FLOP_D_RESET)     0.00 #     0.00 r
+  u_wrap/u_core/elem_idx_reg[0]/Q (FLIP_FLOP_D_RESET)     1.00       1.00 r
+  u_wrap/u_core/U831/O (INV_GATE)                         1.00       2.00 f
+  u_wrap/u_core/U89/O (AND_GATE)                          1.10       3.10 f
+  u_wrap/u_core/U87/O (INV_GATE)                          1.00       4.10 r
+  u_wrap/u_core/U836/O (AND_GATE)                         1.10       5.20 r
+  u_wrap/u_core/U837/O (OR_GATE)                          1.10       6.30 r
+  u_wrap/u_core/U838/O (NAND_GATE)                        1.10       7.40 f
+  u_wrap/u_core/U839/O (NAND_GATE)                        1.10       8.50 r
+  u_wrap/u_core/U840/O (AND_GATE)                         1.10       9.60 r
+  u_wrap/u_core/U841/O (OR_GATE)                          1.10      10.70 r
+  u_wrap/u_core/U842/O (AND_GATE)                         1.10      11.80 r
+  u_wrap/u_core/U1607/O (AND_GATE)                        1.10      12.90 r
+  u_wrap/u_core/U1609/O (AND_GATE)                        1.10      14.00 r
+  u_wrap/u_core/U1617/O (INV_GATE)                        1.00      15.00 f
+  u_wrap/u_core/U1618/O (OR_GATE)                         1.10      16.10 f
+  u_wrap/u_core/U1620/O (NAND_GATE)                       1.10      17.20 r
+  u_wrap/u_core/wdata_b[3] (mbist_core_00000008_00000020_00000010)     0.00    17.20 r
+  U1037/O (NAND_GATE)                                     1.10      18.30 f
+  U1039/O (NAND_GATE)                                     1.10      19.40 r
+  u_ram/wdata_b_i[3] (dp_ram_00000008_00000080)           0.00      19.40 r
+  u_ram/U8672/O (INV_GATE)                                1.00      20.40 f
+  u_ram/U8688/O (OR_GATE)                                 1.10      21.50 f
+  u_ram/U8690/O (NAND_GATE)                               1.10      22.60 r
+  u_ram/mem_reg[4][3]/D (FLIP_FLOP_D)                     0.00      22.60 r
+  data arrival time                                                 22.60
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_ram/mem_reg[4][3]/CK (FLIP_FLOP_D)                    0.00      26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -22.60
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.20
+
+
+  Startpoint: u_wrap/u_core/elem_idx_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_ram/mem_reg[8][3]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  mbist_system_top   20x20                 pdt2002
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wrap/u_core/elem_idx_reg[0]/CK (FLIP_FLOP_D_RESET)     0.00 #     0.00 r
+  u_wrap/u_core/elem_idx_reg[0]/Q (FLIP_FLOP_D_RESET)     1.00       1.00 r
+  u_wrap/u_core/U831/O (INV_GATE)                         1.00       2.00 f
+  u_wrap/u_core/U89/O (AND_GATE)                          1.10       3.10 f
+  u_wrap/u_core/U87/O (INV_GATE)                          1.00       4.10 r
+  u_wrap/u_core/U836/O (AND_GATE)                         1.10       5.20 r
+  u_wrap/u_core/U837/O (OR_GATE)                          1.10       6.30 r
+  u_wrap/u_core/U838/O (NAND_GATE)                        1.10       7.40 f
+  u_wrap/u_core/U839/O (NAND_GATE)                        1.10       8.50 r
+  u_wrap/u_core/U840/O (AND_GATE)                         1.10       9.60 r
+  u_wrap/u_core/U841/O (OR_GATE)                          1.10      10.70 r
+  u_wrap/u_core/U842/O (AND_GATE)                         1.10      11.80 r
+  u_wrap/u_core/U1607/O (AND_GATE)                        1.10      12.90 r
+  u_wrap/u_core/U1609/O (AND_GATE)                        1.10      14.00 r
+  u_wrap/u_core/U1617/O (INV_GATE)                        1.00      15.00 f
+  u_wrap/u_core/U1618/O (OR_GATE)                         1.10      16.10 f
+  u_wrap/u_core/U1620/O (NAND_GATE)                       1.10      17.20 r
+  u_wrap/u_core/wdata_b[3] (mbist_core_00000008_00000020_00000010)     0.00    17.20 r
+  U1037/O (NAND_GATE)                                     1.10      18.30 f
+  U1039/O (NAND_GATE)                                     1.10      19.40 r
+  u_ram/wdata_b_i[3] (dp_ram_00000008_00000080)           0.00      19.40 r
+  u_ram/U8672/O (INV_GATE)                                1.00      20.40 f
+  u_ram/U8700/O (OR_GATE)                                 1.10      21.50 f
+  u_ram/U8702/O (NAND_GATE)                               1.10      22.60 r
+  u_ram/mem_reg[8][3]/D (FLIP_FLOP_D)                     0.00      22.60 r
+  data arrival time                                                 22.60
+
+  clock clk (rise edge)                                  27.00      27.00
+  clock network delay (ideal)                             0.00      27.00
+  clock uncertainty                                      -0.20      26.80
+  u_ram/mem_reg[8][3]/CK (FLIP_FLOP_D)                    0.00      26.80 r
+  library setup time                                      0.00      26.80
+  data required time                                                26.80
+  --------------------------------------------------------------------------
+  data required time                                                26.80
+  data arrival time                                                -22.60
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.20
+
+
+1

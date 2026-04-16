@@ -1,0 +1,45 @@
+ 
+****************************************
+Report : area
+Design : mbist_system_top
+Version: U-2022.12
+Date   : Sat Jan 17 06:32:39 2026
+****************************************
+
+Library(s) Used:
+
+    pdt2002 (File: /home/s327033/HW1_project/pdt2002.db)
+
+Number of ports:                          604
+Number of nets:                         16653
+Number of cells:                        16319
+Number of combinational cells:          13963
+Number of sequential cells:              2353
+Number of macros/black boxes:               0
+Number of buf/inv:                       1892
+Number of references:                      16
+
+Combinational area:              27673.000000
+Buf/Inv area:                     1892.000000
+Noncombinational area:           23530.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                 51203.000000
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area            Local cell area
+                                  -------------------  ------------------------------ 
+Hierarchical cell                 Absolute    Percent  Combi-      Noncombi-   Black-
+                                  Total       Total    national    national    boxes   Design
+--------------------------------  ----------  -------  ----------  ----------  ------  -------------------------------------
+mbist_system_top                  51203.0000    100.0   1774.0000   1360.0000  0.0000  mbist_system_top
+u_ram                             42531.0000     83.1  21731.0000  20800.0000  0.0000  dp_ram_00000008_00000080
+u_wrap/u_core                      5538.0000     10.8   4168.0000   1370.0000  0.0000  mbist_core_00000008_00000020_00000010
+--------------------------------  ----------  -------  ----------  ----------  ------  -------------------------------------
+Total                                                  27673.0000  23530.0000  0.0000
+
+1

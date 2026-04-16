@@ -1,0 +1,1201 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+                 Version U-2022.12 for linux64 - Nov 22, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+# ==============================
+# # Design Compiler script - MBIST wrapper (CSR + core)
+# # Top: mbist_csr_wrap
+# # Synthesizes MBIST IP logic; RAM remains external (ram_* ports)
+# # ==============================
+set TOP mbist_csr_wrap
+mbist_csr_wrap
+file mkdir dc_work
+file mkdir dc_out
+define_design_lib work -path ./dc_work
+1
+# Put RTL + pdt2002.db in the same directory, or extend search_path.
+set search_path [list . [pwd]]
+. /home/s327033/HW1_project
+# Libraries
+# NOTE: "*" keeps DC's default libraries in the link path.
+set_app_var target_library [list pdt2002.db]
+pdt2002.db
+set_app_var link_library   [list * pdt2002.db]
+* pdt2002.db
+# Extra setup (dont_use cells, etc.)
+source ./pdt2002.dc_setup.tcl
+Loading db file '/home/s327033/HW1_project/pdt2002.db'
+1
+# RTL list (wrapper instantiates mbist_core)
+set RTL [list \
+   mbist_core_v3.sv \
+     mbist_csr_wrap_v3.sv \
+     ]
+mbist_core_v3.sv mbist_csr_wrap_v3.sv
+analyze   -library work -format sverilog $RTL
+Running PRESTO HDLC
+Compiling source file ./mbist_core_v3.sv
+Compiling source file ./mbist_csr_wrap_v3.sv
+Presto compilation completed successfully.
+1
+elaborate $TOP
+Loading db file '/eda/synopsys/2022-23/RHELx86/SYN_2022.12/libraries/syn/gtech.db'
+Loading db file '/eda/synopsys/2022-23/RHELx86/SYN_2022.12/libraries/syn/standard.sldb'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Statistics for case statements in always block at line 131 in file
+	'./mbist_csr_wrap_v3.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           167            |    user/user     |
+===============================================
+
+Statistics for case statements in always block at line 307 in file
+	'./mbist_csr_wrap_v3.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           310            |    user/user     |
+===============================================
+
+Inferred memory devices in process
+	in routine mbist_csr_wrap line 131 in file
+		'./mbist_csr_wrap_v3.sv'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+|   err_got_lat_reg    | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  test_mode_reg_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|  bg_enable_reg_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   bg_count_reg_reg   | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+| stop_on_fail_reg_reg | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   algo_sel_reg_reg   | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+| sig_check_en_reg_reg | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   exp_sig_reg_reg    | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     c_done_q_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|  start_addr_reg_reg  | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+|   end_addr_reg_reg   | Flip-flop |   6   |  Y  | N  | N  | Y  | N  | N  | N  |
+|   end_addr_reg_reg   | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    run_active_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    start_pend_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|     done_lat_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|     pass_lat_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|     fail_lat_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   aborted_lat_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|     sig_lat_reg      | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+| sig_mismatch_lat_reg | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|  err_valid_lat_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   err_addr_lat_reg   | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+|   err_exp_lat_reg    | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+================================================================================
+Presto compilation completed successfully. (mbist_csr_wrap)
+Elaborated 1 design.
+Current design is now 'mbist_csr_wrap'.
+Information: Building the design 'mbist_core' instantiated from design 'mbist_csr_wrap' with
+	the parameters "ADDR_WIDTH=32'h00000008,DATA_WIDTH=32'h00000020,MISR_WIDTH=32'h00000010". (HDL-193)
+Warning:  ./mbist_core_v3.sv:194: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./mbist_core_v3.sv:293: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  ./mbist_core_v3.sv:545: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 273 in file
+	'./mbist_core_v3.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           150            |    auto/auto     |
+|           152            |    auto/auto     |
+|           160            |    auto/auto     |
+|           164            |    auto/auto     |
+|           175            |    auto/auto     |
+|           288            |    user/user     |
+===============================================
+
+Statistics for case statements in always block at line 321 in file
+	'./mbist_core_v3.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           341            |    user/user     |
+|            92            |    auto/auto     |
+|           117            |    auto/auto     |
+|           119            |    auto/auto     |
+|           127            |    auto/auto     |
+|           135            |    auto/auto     |
+|            94            |    auto/auto     |
+|           102            |    auto/auto     |
+|            83            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine mbist_core_00000008_00000020_00000010 line 321 in file
+		'./mbist_core_v3.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     err_got_reg     | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      state_reg      | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    cur_addr_reg     | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    elem_idx_reg     | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     op_idx_reg      | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     bg_idx_reg      | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  fail_latched_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|  read_pending_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   expected_q_reg    | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    signature_reg    | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    err_valid_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    err_addr_reg     | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  err_expected_reg   | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (mbist_core_00000008_00000020_00000010)
+1
+current_design $TOP
+Current design is 'mbist_csr_wrap'.
+{mbist_csr_wrap}
+link
+
+  Linking design 'mbist_csr_wrap'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  pdt2002 (library)           /home/s327033/HW1_project/pdt2002.db
+
+1
+check_design
+ 
+****************************************
+check_design summary:
+Version:     U-2022.12
+Date:        Sat Jan 17 06:52:35 2026
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     23
+    Unconnected ports (LINT-28)                                    16
+    Shorted outputs (LINT-31)                                       3
+    Constant outputs (LINT-52)                                      4
+
+Cells                                                              12
+    Cells do not drive (LINT-1)                                    12
+
+Nets                                                                1
+    Unloaded nets (LINT-2)                                          1
+--------------------------------------------------------------------------------
+
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C5831' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C5857' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C5865' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C5894' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C5895' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C6177' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C6203' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C6211' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C6237' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C6238' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C6241' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_core_00000008_00000020_00000010', cell 'C6244' does not drive any nets. (LINT-1)
+Warning: In design 'mbist_csr_wrap', net 'c_busy' driven by pin 'u_core/busy' has no loads. (LINT-2)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[31]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[30]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[29]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[28]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[27]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[26]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[25]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[24]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[23]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[22]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[21]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[20]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[19]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[18]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[17]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_csr_wrap', port 'csr_wdata[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'mbist_core_00000008_00000020_00000010', output port 'be_b[3]' is connected directly to output port 'be_b[0]'. (LINT-31)
+Warning: In design 'mbist_core_00000008_00000020_00000010', output port 'be_b[3]' is connected directly to output port 'be_b[1]'. (LINT-31)
+Warning: In design 'mbist_core_00000008_00000020_00000010', output port 'be_b[3]' is connected directly to output port 'be_b[2]'. (LINT-31)
+Warning: In design 'mbist_core_00000008_00000020_00000010', output port 'be_b[3]' is connected directly to 'logic 1'. (LINT-52)
+Warning: In design 'mbist_core_00000008_00000020_00000010', output port 'be_b[2]' is connected directly to 'logic 1'. (LINT-52)
+Warning: In design 'mbist_core_00000008_00000020_00000010', output port 'be_b[1]' is connected directly to 'logic 1'. (LINT-52)
+Warning: In design 'mbist_core_00000008_00000020_00000010', output port 'be_b[0]' is connected directly to 'logic 1'. (LINT-52)
+1
+check_timing
+Information: Updating design information... (UID-85)
+Warning: Design 'mbist_csr_wrap' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+
+Information: Checking no_input_delay...
+
+Information: Checking unconstrained_endpoints...
+
+Warning: The following end-points are not constrained for maximum delay.
+
+End point
+---------------
+aborted_lat_reg/next_state
+aborted_lat_reg/synch_enable
+algo_sel_reg_reg[0]/next_state
+algo_sel_reg_reg[0]/synch_enable
+algo_sel_reg_reg[1]/next_state
+algo_sel_reg_reg[1]/synch_enable
+bg_count_reg_reg[0]/next_state
+bg_count_reg_reg[0]/synch_enable
+bg_count_reg_reg[1]/next_state
+bg_count_reg_reg[1]/synch_enable
+bg_count_reg_reg[2]/next_state
+bg_count_reg_reg[2]/synch_enable
+bg_enable_reg_reg/next_state
+bg_enable_reg_reg/synch_enable
+c_done_q_reg/next_state
+csr_rdata[0]
+csr_rdata[1]
+csr_rdata[2]
+csr_rdata[3]
+csr_rdata[4]
+csr_rdata[5]
+csr_rdata[6]
+csr_rdata[7]
+csr_rdata[8]
+csr_rdata[9]
+csr_rdata[10]
+csr_rdata[11]
+csr_rdata[12]
+csr_rdata[13]
+csr_rdata[14]
+csr_rdata[15]
+csr_rdata[16]
+csr_rdata[17]
+csr_rdata[18]
+csr_rdata[19]
+csr_rdata[20]
+csr_rdata[21]
+csr_rdata[22]
+csr_rdata[23]
+csr_rdata[24]
+csr_rdata[25]
+csr_rdata[26]
+csr_rdata[27]
+csr_rdata[28]
+csr_rdata[29]
+csr_rdata[30]
+csr_rdata[31]
+done_lat_reg/next_state
+done_lat_reg/synch_enable
+end_addr_reg_reg[0]/next_state
+end_addr_reg_reg[0]/synch_enable
+end_addr_reg_reg[1]/next_state
+end_addr_reg_reg[1]/synch_enable
+end_addr_reg_reg[2]/next_state
+end_addr_reg_reg[2]/synch_enable
+end_addr_reg_reg[3]/next_state
+end_addr_reg_reg[3]/synch_enable
+end_addr_reg_reg[4]/next_state
+end_addr_reg_reg[4]/synch_enable
+end_addr_reg_reg[5]/next_state
+end_addr_reg_reg[5]/synch_enable
+end_addr_reg_reg[6]/next_state
+end_addr_reg_reg[6]/synch_enable
+end_addr_reg_reg[7]/next_state
+end_addr_reg_reg[7]/synch_enable
+err_addr_lat_reg[0]/next_state
+err_addr_lat_reg[0]/synch_enable
+err_addr_lat_reg[1]/next_state
+err_addr_lat_reg[1]/synch_enable
+err_addr_lat_reg[2]/next_state
+err_addr_lat_reg[2]/synch_enable
+err_addr_lat_reg[3]/next_state
+err_addr_lat_reg[3]/synch_enable
+err_addr_lat_reg[4]/next_state
+err_addr_lat_reg[4]/synch_enable
+err_addr_lat_reg[5]/next_state
+err_addr_lat_reg[5]/synch_enable
+err_addr_lat_reg[6]/next_state
+err_addr_lat_reg[6]/synch_enable
+err_addr_lat_reg[7]/next_state
+err_addr_lat_reg[7]/synch_enable
+err_exp_lat_reg[0]/next_state
+err_exp_lat_reg[0]/synch_enable
+err_exp_lat_reg[1]/next_state
+err_exp_lat_reg[1]/synch_enable
+err_exp_lat_reg[2]/next_state
+err_exp_lat_reg[2]/synch_enable
+err_exp_lat_reg[3]/next_state
+err_exp_lat_reg[3]/synch_enable
+err_exp_lat_reg[4]/next_state
+err_exp_lat_reg[4]/synch_enable
+err_exp_lat_reg[5]/next_state
+err_exp_lat_reg[5]/synch_enable
+err_exp_lat_reg[6]/next_state
+err_exp_lat_reg[6]/synch_enable
+err_exp_lat_reg[7]/next_state
+err_exp_lat_reg[7]/synch_enable
+err_exp_lat_reg[8]/next_state
+err_exp_lat_reg[8]/synch_enable
+err_exp_lat_reg[9]/next_state
+err_exp_lat_reg[9]/synch_enable
+err_exp_lat_reg[10]/next_state
+err_exp_lat_reg[10]/synch_enable
+err_exp_lat_reg[11]/next_state
+err_exp_lat_reg[11]/synch_enable
+err_exp_lat_reg[12]/next_state
+err_exp_lat_reg[12]/synch_enable
+err_exp_lat_reg[13]/next_state
+err_exp_lat_reg[13]/synch_enable
+err_exp_lat_reg[14]/next_state
+err_exp_lat_reg[14]/synch_enable
+err_exp_lat_reg[15]/next_state
+err_exp_lat_reg[15]/synch_enable
+err_exp_lat_reg[16]/next_state
+err_exp_lat_reg[16]/synch_enable
+err_exp_lat_reg[17]/next_state
+err_exp_lat_reg[17]/synch_enable
+err_exp_lat_reg[18]/next_state
+err_exp_lat_reg[18]/synch_enable
+err_exp_lat_reg[19]/next_state
+err_exp_lat_reg[19]/synch_enable
+err_exp_lat_reg[20]/next_state
+err_exp_lat_reg[20]/synch_enable
+err_exp_lat_reg[21]/next_state
+err_exp_lat_reg[21]/synch_enable
+err_exp_lat_reg[22]/next_state
+err_exp_lat_reg[22]/synch_enable
+err_exp_lat_reg[23]/next_state
+err_exp_lat_reg[23]/synch_enable
+err_exp_lat_reg[24]/next_state
+err_exp_lat_reg[24]/synch_enable
+err_exp_lat_reg[25]/next_state
+err_exp_lat_reg[25]/synch_enable
+err_exp_lat_reg[26]/next_state
+err_exp_lat_reg[26]/synch_enable
+err_exp_lat_reg[27]/next_state
+err_exp_lat_reg[27]/synch_enable
+err_exp_lat_reg[28]/next_state
+err_exp_lat_reg[28]/synch_enable
+err_exp_lat_reg[29]/next_state
+err_exp_lat_reg[29]/synch_enable
+err_exp_lat_reg[30]/next_state
+err_exp_lat_reg[30]/synch_enable
+err_exp_lat_reg[31]/next_state
+err_exp_lat_reg[31]/synch_enable
+err_got_lat_reg[0]/next_state
+err_got_lat_reg[0]/synch_enable
+err_got_lat_reg[1]/next_state
+err_got_lat_reg[1]/synch_enable
+err_got_lat_reg[2]/next_state
+err_got_lat_reg[2]/synch_enable
+err_got_lat_reg[3]/next_state
+err_got_lat_reg[3]/synch_enable
+err_got_lat_reg[4]/next_state
+err_got_lat_reg[4]/synch_enable
+err_got_lat_reg[5]/next_state
+err_got_lat_reg[5]/synch_enable
+err_got_lat_reg[6]/next_state
+err_got_lat_reg[6]/synch_enable
+err_got_lat_reg[7]/next_state
+err_got_lat_reg[7]/synch_enable
+err_got_lat_reg[8]/next_state
+err_got_lat_reg[8]/synch_enable
+err_got_lat_reg[9]/next_state
+err_got_lat_reg[9]/synch_enable
+err_got_lat_reg[10]/next_state
+err_got_lat_reg[10]/synch_enable
+err_got_lat_reg[11]/next_state
+err_got_lat_reg[11]/synch_enable
+err_got_lat_reg[12]/next_state
+err_got_lat_reg[12]/synch_enable
+err_got_lat_reg[13]/next_state
+err_got_lat_reg[13]/synch_enable
+err_got_lat_reg[14]/next_state
+err_got_lat_reg[14]/synch_enable
+err_got_lat_reg[15]/next_state
+err_got_lat_reg[15]/synch_enable
+err_got_lat_reg[16]/next_state
+err_got_lat_reg[16]/synch_enable
+err_got_lat_reg[17]/next_state
+err_got_lat_reg[17]/synch_enable
+err_got_lat_reg[18]/next_state
+err_got_lat_reg[18]/synch_enable
+err_got_lat_reg[19]/next_state
+err_got_lat_reg[19]/synch_enable
+err_got_lat_reg[20]/next_state
+err_got_lat_reg[20]/synch_enable
+err_got_lat_reg[21]/next_state
+err_got_lat_reg[21]/synch_enable
+err_got_lat_reg[22]/next_state
+err_got_lat_reg[22]/synch_enable
+err_got_lat_reg[23]/next_state
+err_got_lat_reg[23]/synch_enable
+err_got_lat_reg[24]/next_state
+err_got_lat_reg[24]/synch_enable
+err_got_lat_reg[25]/next_state
+err_got_lat_reg[25]/synch_enable
+err_got_lat_reg[26]/next_state
+err_got_lat_reg[26]/synch_enable
+err_got_lat_reg[27]/next_state
+err_got_lat_reg[27]/synch_enable
+err_got_lat_reg[28]/next_state
+err_got_lat_reg[28]/synch_enable
+err_got_lat_reg[29]/next_state
+err_got_lat_reg[29]/synch_enable
+err_got_lat_reg[30]/next_state
+err_got_lat_reg[30]/synch_enable
+err_got_lat_reg[31]/next_state
+err_got_lat_reg[31]/synch_enable
+err_valid_lat_reg/next_state
+err_valid_lat_reg/synch_enable
+exp_sig_reg_reg[0]/next_state
+exp_sig_reg_reg[0]/synch_enable
+exp_sig_reg_reg[1]/next_state
+exp_sig_reg_reg[1]/synch_enable
+exp_sig_reg_reg[2]/next_state
+exp_sig_reg_reg[2]/synch_enable
+exp_sig_reg_reg[3]/next_state
+exp_sig_reg_reg[3]/synch_enable
+exp_sig_reg_reg[4]/next_state
+exp_sig_reg_reg[4]/synch_enable
+exp_sig_reg_reg[5]/next_state
+exp_sig_reg_reg[5]/synch_enable
+exp_sig_reg_reg[6]/next_state
+exp_sig_reg_reg[6]/synch_enable
+exp_sig_reg_reg[7]/next_state
+exp_sig_reg_reg[7]/synch_enable
+exp_sig_reg_reg[8]/next_state
+exp_sig_reg_reg[8]/synch_enable
+exp_sig_reg_reg[9]/next_state
+exp_sig_reg_reg[9]/synch_enable
+exp_sig_reg_reg[10]/next_state
+exp_sig_reg_reg[10]/synch_enable
+exp_sig_reg_reg[11]/next_state
+exp_sig_reg_reg[11]/synch_enable
+exp_sig_reg_reg[12]/next_state
+exp_sig_reg_reg[12]/synch_enable
+exp_sig_reg_reg[13]/next_state
+exp_sig_reg_reg[13]/synch_enable
+exp_sig_reg_reg[14]/next_state
+exp_sig_reg_reg[14]/synch_enable
+exp_sig_reg_reg[15]/next_state
+exp_sig_reg_reg[15]/synch_enable
+fail_lat_reg/next_state
+fail_lat_reg/synch_enable
+n_rdata_b[0]
+n_rdata_b[1]
+n_rdata_b[2]
+n_rdata_b[3]
+n_rdata_b[4]
+n_rdata_b[5]
+n_rdata_b[6]
+n_rdata_b[7]
+n_rdata_b[8]
+n_rdata_b[9]
+n_rdata_b[10]
+n_rdata_b[11]
+n_rdata_b[12]
+n_rdata_b[13]
+n_rdata_b[14]
+n_rdata_b[15]
+n_rdata_b[16]
+n_rdata_b[17]
+n_rdata_b[18]
+n_rdata_b[19]
+n_rdata_b[20]
+n_rdata_b[21]
+n_rdata_b[22]
+n_rdata_b[23]
+n_rdata_b[24]
+n_rdata_b[25]
+n_rdata_b[26]
+n_rdata_b[27]
+n_rdata_b[28]
+n_rdata_b[29]
+n_rdata_b[30]
+n_rdata_b[31]
+pass_lat_reg/next_state
+pass_lat_reg/synch_enable
+ram_addr_b[0]
+ram_addr_b[1]
+ram_addr_b[2]
+ram_addr_b[3]
+ram_addr_b[4]
+ram_addr_b[5]
+ram_addr_b[6]
+ram_addr_b[7]
+ram_be_b[0]
+ram_be_b[1]
+ram_be_b[2]
+ram_be_b[3]
+ram_en_b
+ram_wdata_b[0]
+ram_wdata_b[1]
+ram_wdata_b[2]
+ram_wdata_b[3]
+ram_wdata_b[4]
+ram_wdata_b[5]
+ram_wdata_b[6]
+ram_wdata_b[7]
+ram_wdata_b[8]
+ram_wdata_b[9]
+ram_wdata_b[10]
+ram_wdata_b[11]
+ram_wdata_b[12]
+ram_wdata_b[13]
+ram_wdata_b[14]
+ram_wdata_b[15]
+ram_wdata_b[16]
+ram_wdata_b[17]
+ram_wdata_b[18]
+ram_wdata_b[19]
+ram_wdata_b[20]
+ram_wdata_b[21]
+ram_wdata_b[22]
+ram_wdata_b[23]
+ram_wdata_b[24]
+ram_wdata_b[25]
+ram_wdata_b[26]
+ram_wdata_b[27]
+ram_wdata_b[28]
+ram_wdata_b[29]
+ram_wdata_b[30]
+ram_wdata_b[31]
+ram_we_b
+run_active_reg/next_state
+run_active_reg/synch_enable
+sig_check_en_reg_reg/next_state
+sig_check_en_reg_reg/synch_enable
+sig_lat_reg[0]/next_state
+sig_lat_reg[0]/synch_enable
+sig_lat_reg[1]/next_state
+sig_lat_reg[1]/synch_enable
+sig_lat_reg[2]/next_state
+sig_lat_reg[2]/synch_enable
+sig_lat_reg[3]/next_state
+sig_lat_reg[3]/synch_enable
+sig_lat_reg[4]/next_state
+sig_lat_reg[4]/synch_enable
+sig_lat_reg[5]/next_state
+sig_lat_reg[5]/synch_enable
+sig_lat_reg[6]/next_state
+sig_lat_reg[6]/synch_enable
+sig_lat_reg[7]/next_state
+sig_lat_reg[7]/synch_enable
+sig_lat_reg[8]/next_state
+sig_lat_reg[8]/synch_enable
+sig_lat_reg[9]/next_state
+sig_lat_reg[9]/synch_enable
+sig_lat_reg[10]/next_state
+sig_lat_reg[10]/synch_enable
+sig_lat_reg[11]/next_state
+sig_lat_reg[11]/synch_enable
+sig_lat_reg[12]/next_state
+sig_lat_reg[12]/synch_enable
+sig_lat_reg[13]/next_state
+sig_lat_reg[13]/synch_enable
+sig_lat_reg[14]/next_state
+sig_lat_reg[14]/synch_enable
+sig_lat_reg[15]/next_state
+sig_lat_reg[15]/synch_enable
+sig_mismatch_lat_reg/next_state
+sig_mismatch_lat_reg/synch_enable
+start_addr_reg_reg[0]/next_state
+start_addr_reg_reg[0]/synch_enable
+start_addr_reg_reg[1]/next_state
+start_addr_reg_reg[1]/synch_enable
+start_addr_reg_reg[2]/next_state
+start_addr_reg_reg[2]/synch_enable
+start_addr_reg_reg[3]/next_state
+start_addr_reg_reg[3]/synch_enable
+start_addr_reg_reg[4]/next_state
+start_addr_reg_reg[4]/synch_enable
+start_addr_reg_reg[5]/next_state
+start_addr_reg_reg[5]/synch_enable
+start_addr_reg_reg[6]/next_state
+start_addr_reg_reg[6]/synch_enable
+start_addr_reg_reg[7]/next_state
+start_addr_reg_reg[7]/synch_enable
+start_pend_reg/next_state
+start_pend_reg/synch_enable
+stop_on_fail_reg_reg/next_state
+stop_on_fail_reg_reg/synch_enable
+test_mode_reg_reg/next_state
+test_mode_reg_reg/synch_enable
+u_core/bg_idx_reg[0]/next_state
+u_core/bg_idx_reg[0]/synch_enable
+u_core/bg_idx_reg[1]/next_state
+u_core/bg_idx_reg[1]/synch_enable
+u_core/bg_idx_reg[2]/next_state
+u_core/bg_idx_reg[2]/synch_enable
+u_core/cur_addr_reg[0]/next_state
+u_core/cur_addr_reg[0]/synch_enable
+u_core/cur_addr_reg[1]/next_state
+u_core/cur_addr_reg[1]/synch_enable
+u_core/cur_addr_reg[2]/next_state
+u_core/cur_addr_reg[2]/synch_enable
+u_core/cur_addr_reg[3]/next_state
+u_core/cur_addr_reg[3]/synch_enable
+u_core/cur_addr_reg[4]/next_state
+u_core/cur_addr_reg[4]/synch_enable
+u_core/cur_addr_reg[5]/next_state
+u_core/cur_addr_reg[5]/synch_enable
+u_core/cur_addr_reg[6]/next_state
+u_core/cur_addr_reg[6]/synch_enable
+u_core/cur_addr_reg[7]/next_state
+u_core/cur_addr_reg[7]/synch_enable
+u_core/elem_idx_reg[0]/next_state
+u_core/elem_idx_reg[0]/synch_enable
+u_core/elem_idx_reg[1]/next_state
+u_core/elem_idx_reg[1]/synch_enable
+u_core/elem_idx_reg[2]/next_state
+u_core/elem_idx_reg[2]/synch_enable
+u_core/err_addr_reg[0]/next_state
+u_core/err_addr_reg[0]/synch_enable
+u_core/err_addr_reg[1]/next_state
+u_core/err_addr_reg[1]/synch_enable
+u_core/err_addr_reg[2]/next_state
+u_core/err_addr_reg[2]/synch_enable
+u_core/err_addr_reg[3]/next_state
+u_core/err_addr_reg[3]/synch_enable
+u_core/err_addr_reg[4]/next_state
+u_core/err_addr_reg[4]/synch_enable
+u_core/err_addr_reg[5]/next_state
+u_core/err_addr_reg[5]/synch_enable
+u_core/err_addr_reg[6]/next_state
+u_core/err_addr_reg[6]/synch_enable
+u_core/err_addr_reg[7]/next_state
+u_core/err_addr_reg[7]/synch_enable
+u_core/err_expected_reg[0]/next_state
+u_core/err_expected_reg[0]/synch_enable
+u_core/err_expected_reg[1]/next_state
+u_core/err_expected_reg[1]/synch_enable
+u_core/err_expected_reg[2]/next_state
+u_core/err_expected_reg[2]/synch_enable
+u_core/err_expected_reg[3]/next_state
+u_core/err_expected_reg[3]/synch_enable
+u_core/err_expected_reg[4]/next_state
+u_core/err_expected_reg[4]/synch_enable
+u_core/err_expected_reg[5]/next_state
+u_core/err_expected_reg[5]/synch_enable
+u_core/err_expected_reg[6]/next_state
+u_core/err_expected_reg[6]/synch_enable
+u_core/err_expected_reg[7]/next_state
+u_core/err_expected_reg[7]/synch_enable
+u_core/err_expected_reg[8]/next_state
+u_core/err_expected_reg[8]/synch_enable
+u_core/err_expected_reg[9]/next_state
+u_core/err_expected_reg[9]/synch_enable
+u_core/err_expected_reg[10]/next_state
+u_core/err_expected_reg[10]/synch_enable
+u_core/err_expected_reg[11]/next_state
+u_core/err_expected_reg[11]/synch_enable
+u_core/err_expected_reg[12]/next_state
+u_core/err_expected_reg[12]/synch_enable
+u_core/err_expected_reg[13]/next_state
+u_core/err_expected_reg[13]/synch_enable
+u_core/err_expected_reg[14]/next_state
+u_core/err_expected_reg[14]/synch_enable
+u_core/err_expected_reg[15]/next_state
+u_core/err_expected_reg[15]/synch_enable
+u_core/err_expected_reg[16]/next_state
+u_core/err_expected_reg[16]/synch_enable
+u_core/err_expected_reg[17]/next_state
+u_core/err_expected_reg[17]/synch_enable
+u_core/err_expected_reg[18]/next_state
+u_core/err_expected_reg[18]/synch_enable
+u_core/err_expected_reg[19]/next_state
+u_core/err_expected_reg[19]/synch_enable
+u_core/err_expected_reg[20]/next_state
+u_core/err_expected_reg[20]/synch_enable
+u_core/err_expected_reg[21]/next_state
+u_core/err_expected_reg[21]/synch_enable
+u_core/err_expected_reg[22]/next_state
+u_core/err_expected_reg[22]/synch_enable
+u_core/err_expected_reg[23]/next_state
+u_core/err_expected_reg[23]/synch_enable
+u_core/err_expected_reg[24]/next_state
+u_core/err_expected_reg[24]/synch_enable
+u_core/err_expected_reg[25]/next_state
+u_core/err_expected_reg[25]/synch_enable
+u_core/err_expected_reg[26]/next_state
+u_core/err_expected_reg[26]/synch_enable
+u_core/err_expected_reg[27]/next_state
+u_core/err_expected_reg[27]/synch_enable
+u_core/err_expected_reg[28]/next_state
+u_core/err_expected_reg[28]/synch_enable
+u_core/err_expected_reg[29]/next_state
+u_core/err_expected_reg[29]/synch_enable
+u_core/err_expected_reg[30]/next_state
+u_core/err_expected_reg[30]/synch_enable
+u_core/err_expected_reg[31]/next_state
+u_core/err_expected_reg[31]/synch_enable
+u_core/err_got_reg[0]/next_state
+u_core/err_got_reg[0]/synch_enable
+u_core/err_got_reg[1]/next_state
+u_core/err_got_reg[1]/synch_enable
+u_core/err_got_reg[2]/next_state
+u_core/err_got_reg[2]/synch_enable
+u_core/err_got_reg[3]/next_state
+u_core/err_got_reg[3]/synch_enable
+u_core/err_got_reg[4]/next_state
+u_core/err_got_reg[4]/synch_enable
+u_core/err_got_reg[5]/next_state
+u_core/err_got_reg[5]/synch_enable
+u_core/err_got_reg[6]/next_state
+u_core/err_got_reg[6]/synch_enable
+u_core/err_got_reg[7]/next_state
+u_core/err_got_reg[7]/synch_enable
+u_core/err_got_reg[8]/next_state
+u_core/err_got_reg[8]/synch_enable
+u_core/err_got_reg[9]/next_state
+u_core/err_got_reg[9]/synch_enable
+u_core/err_got_reg[10]/next_state
+u_core/err_got_reg[10]/synch_enable
+u_core/err_got_reg[11]/next_state
+u_core/err_got_reg[11]/synch_enable
+u_core/err_got_reg[12]/next_state
+u_core/err_got_reg[12]/synch_enable
+u_core/err_got_reg[13]/next_state
+u_core/err_got_reg[13]/synch_enable
+u_core/err_got_reg[14]/next_state
+u_core/err_got_reg[14]/synch_enable
+u_core/err_got_reg[15]/next_state
+u_core/err_got_reg[15]/synch_enable
+u_core/err_got_reg[16]/next_state
+u_core/err_got_reg[16]/synch_enable
+u_core/err_got_reg[17]/next_state
+u_core/err_got_reg[17]/synch_enable
+u_core/err_got_reg[18]/next_state
+u_core/err_got_reg[18]/synch_enable
+u_core/err_got_reg[19]/next_state
+u_core/err_got_reg[19]/synch_enable
+u_core/err_got_reg[20]/next_state
+u_core/err_got_reg[20]/synch_enable
+u_core/err_got_reg[21]/next_state
+u_core/err_got_reg[21]/synch_enable
+u_core/err_got_reg[22]/next_state
+u_core/err_got_reg[22]/synch_enable
+u_core/err_got_reg[23]/next_state
+u_core/err_got_reg[23]/synch_enable
+u_core/err_got_reg[24]/next_state
+u_core/err_got_reg[24]/synch_enable
+u_core/err_got_reg[25]/next_state
+u_core/err_got_reg[25]/synch_enable
+u_core/err_got_reg[26]/next_state
+u_core/err_got_reg[26]/synch_enable
+u_core/err_got_reg[27]/next_state
+u_core/err_got_reg[27]/synch_enable
+u_core/err_got_reg[28]/next_state
+u_core/err_got_reg[28]/synch_enable
+u_core/err_got_reg[29]/next_state
+u_core/err_got_reg[29]/synch_enable
+u_core/err_got_reg[30]/next_state
+u_core/err_got_reg[30]/synch_enable
+u_core/err_got_reg[31]/next_state
+u_core/err_got_reg[31]/synch_enable
+u_core/err_valid_reg/next_state
+u_core/err_valid_reg/synch_enable
+u_core/expected_q_reg[0]/next_state
+u_core/expected_q_reg[0]/synch_enable
+u_core/expected_q_reg[1]/next_state
+u_core/expected_q_reg[1]/synch_enable
+u_core/expected_q_reg[2]/next_state
+u_core/expected_q_reg[2]/synch_enable
+u_core/expected_q_reg[3]/next_state
+u_core/expected_q_reg[3]/synch_enable
+u_core/expected_q_reg[4]/next_state
+u_core/expected_q_reg[4]/synch_enable
+u_core/expected_q_reg[5]/next_state
+u_core/expected_q_reg[5]/synch_enable
+u_core/expected_q_reg[6]/next_state
+u_core/expected_q_reg[6]/synch_enable
+u_core/expected_q_reg[7]/next_state
+u_core/expected_q_reg[7]/synch_enable
+u_core/expected_q_reg[8]/next_state
+u_core/expected_q_reg[8]/synch_enable
+u_core/expected_q_reg[9]/next_state
+u_core/expected_q_reg[9]/synch_enable
+u_core/expected_q_reg[10]/next_state
+u_core/expected_q_reg[10]/synch_enable
+u_core/expected_q_reg[11]/next_state
+u_core/expected_q_reg[11]/synch_enable
+u_core/expected_q_reg[12]/next_state
+u_core/expected_q_reg[12]/synch_enable
+u_core/expected_q_reg[13]/next_state
+u_core/expected_q_reg[13]/synch_enable
+u_core/expected_q_reg[14]/next_state
+u_core/expected_q_reg[14]/synch_enable
+u_core/expected_q_reg[15]/next_state
+u_core/expected_q_reg[15]/synch_enable
+u_core/expected_q_reg[16]/next_state
+u_core/expected_q_reg[16]/synch_enable
+u_core/expected_q_reg[17]/next_state
+u_core/expected_q_reg[17]/synch_enable
+u_core/expected_q_reg[18]/next_state
+u_core/expected_q_reg[18]/synch_enable
+u_core/expected_q_reg[19]/next_state
+u_core/expected_q_reg[19]/synch_enable
+u_core/expected_q_reg[20]/next_state
+u_core/expected_q_reg[20]/synch_enable
+u_core/expected_q_reg[21]/next_state
+u_core/expected_q_reg[21]/synch_enable
+u_core/expected_q_reg[22]/next_state
+u_core/expected_q_reg[22]/synch_enable
+u_core/expected_q_reg[23]/next_state
+u_core/expected_q_reg[23]/synch_enable
+u_core/expected_q_reg[24]/next_state
+u_core/expected_q_reg[24]/synch_enable
+u_core/expected_q_reg[25]/next_state
+u_core/expected_q_reg[25]/synch_enable
+u_core/expected_q_reg[26]/next_state
+u_core/expected_q_reg[26]/synch_enable
+u_core/expected_q_reg[27]/next_state
+u_core/expected_q_reg[27]/synch_enable
+u_core/expected_q_reg[28]/next_state
+u_core/expected_q_reg[28]/synch_enable
+u_core/expected_q_reg[29]/next_state
+u_core/expected_q_reg[29]/synch_enable
+u_core/expected_q_reg[30]/next_state
+u_core/expected_q_reg[30]/synch_enable
+u_core/expected_q_reg[31]/next_state
+u_core/expected_q_reg[31]/synch_enable
+u_core/fail_latched_reg/next_state
+u_core/fail_latched_reg/synch_enable
+u_core/op_idx_reg[0]/next_state
+u_core/op_idx_reg[0]/synch_enable
+u_core/op_idx_reg[1]/next_state
+u_core/op_idx_reg[1]/synch_enable
+u_core/op_idx_reg[2]/next_state
+u_core/op_idx_reg[2]/synch_enable
+u_core/read_pending_reg/next_state
+u_core/read_pending_reg/synch_enable
+u_core/signature_reg[0]/next_state
+u_core/signature_reg[0]/synch_enable
+u_core/signature_reg[1]/next_state
+u_core/signature_reg[1]/synch_enable
+u_core/signature_reg[2]/next_state
+u_core/signature_reg[2]/synch_enable
+u_core/signature_reg[3]/next_state
+u_core/signature_reg[3]/synch_enable
+u_core/signature_reg[4]/next_state
+u_core/signature_reg[4]/synch_enable
+u_core/signature_reg[5]/next_state
+u_core/signature_reg[5]/synch_enable
+u_core/signature_reg[6]/next_state
+u_core/signature_reg[6]/synch_enable
+u_core/signature_reg[7]/next_state
+u_core/signature_reg[7]/synch_enable
+u_core/signature_reg[8]/next_state
+u_core/signature_reg[8]/synch_enable
+u_core/signature_reg[9]/next_state
+u_core/signature_reg[9]/synch_enable
+u_core/signature_reg[10]/next_state
+u_core/signature_reg[10]/synch_enable
+u_core/signature_reg[11]/next_state
+u_core/signature_reg[11]/synch_enable
+u_core/signature_reg[12]/next_state
+u_core/signature_reg[12]/synch_enable
+u_core/signature_reg[13]/next_state
+u_core/signature_reg[13]/synch_enable
+u_core/signature_reg[14]/next_state
+u_core/signature_reg[14]/synch_enable
+u_core/signature_reg[15]/next_state
+u_core/signature_reg[15]/synch_enable
+u_core/state_reg[0]/next_state
+u_core/state_reg[0]/synch_enable
+u_core/state_reg[1]/next_state
+u_core/state_reg[1]/synch_enable
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1
+# ------------------------------
+# Constraints
+# ------------------------------
+create_clock -name clk -period 27 [get_ports clk]
+1
+set_dont_touch_network [get_ports clk]
+1
+set_clock_uncertainty 0.2 [get_clocks clk]
+1
+# Treat async reset as non-timed
+if {[sizeof_collection [get_ports rst_n]] > 0} {
+       set_false_path -from [get_ports rst_n]
+       }
+1
+# I/O delays (0ns default, but explicit)
+set_input_delay  0.0 -clock clk [remove_from_collection [all_inputs] [get_ports {clk rst_n}]]
+1
+set_output_delay 0.0 -clock clk [all_outputs]
+1
+# ------------------------------
+# Compile
+# ------------------------------
+compile_ultra
+Loading db file '/eda/synopsys/2022-23/RHELx86/SYN_2022.12/libraries/syn/dw_foundation.sldb'
+Information: Failed to find dw_foundation.sldb in the user defined search_path, load it from 'Synopsys Root'. (UISN-70)
+Warning: DesignWare synthetic library dw_foundation.sldb is added to the synthetic_library in the current command. (UISN-40)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Failed to find dw_foundation.sldb in the user defined search_path, load it from 'Synopsys Root'. (UISN-70)
+Warning: DesignWare synthetic library dw_foundation.sldb is added to the synthetic_library in the current command. (UISN-40)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | U-2022.12-DWBB_202212.0 |     *     |
+| Licensed DW Building Blocks        | U-2022.12-DWBB_202212.0 |     *     |
+============================================================================
+
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                                               |
+| Comand Line  | compile_ultra                                                                     |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 1956                                   |
+| Number of User Hierarchies                              | 1                                      |
+| Sequential Cell Count                                   | 280                                    |
+| Macro Count                                             | 0                                      |
+| Number of Power Domains                                 | 0                                      |
+| Number of Path Groups                                   | 2                                      |
+| Number of VT Class                                      | 0                                      |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 641                                    |
+| Number of Dont Touch Nets                               | 2                                      |
+| Number of Size Only Cells                               | 0                                      |
+| Design with UPF Data                                    | false                                  |
+====================================================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 36 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'mbist_csr_wrap'
+
+Loaded alib file './alib-52/pdt2002.db.alib'
+  Building model 'DW01_NAND2'
+Information: Ungrouping 0 of 2 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'mbist_core_00000008_00000020_00000010'
+Information: Added key list 'DesignWare' to design 'mbist_core_00000008_00000020_00000010'. (DDB-72)
+Information: In design 'mbist_core_00000008_00000020_00000010', the register 'fail_latched_reg' is removed because it is merged to 'err_valid_reg'. (OPT-1215)
+ Implement Synthetic for 'mbist_core_00000008_00000020_00000010'.
+  Processing 'mbist_csr_wrap'
+Information: Added key list 'DesignWare' to design 'mbist_csr_wrap'. (DDB-72)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Warning: Main library 'pdt2002' does not specify the following unit required for power: 'Leakage Power'. (PWR-424)
+Warning: Target library(s) are not characterized for internal power.  Compile with power constraints is NOT recommended. (PWR-13)
+Information: The register 'u_core/cur_addr_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'u_core/err_addr_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'u_core/cur_addr_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'u_core/err_addr_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'err_addr_lat_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'err_addr_lat_reg[1]' is a constant and will be removed. (OPT-1206)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+  Mapping Optimization (Phase 3)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:25   17739.0    505.20   22040.1       0.0                              0.0000
+    0:00:26    9448.0    142.70    5174.7       0.0                              0.0000
+
+  Beginning Constant Register Removal
+  -----------------------------------
+    0:00:26    9172.0    129.70    4642.9       0.0                              0.0000
+    0:00:26    8552.0     27.90     319.3       0.0                              0.0000
+
+  Beginning Global Optimizations
+  ------------------------------
+No buffer cells compatible for Numerical Synthesis
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:26    8505.0     27.90     313.3       0.0                              0.0000
+    0:00:27    8515.0     14.80     190.6       0.0                              0.0000
+    0:00:27    8515.0     14.80     190.6       0.0                              0.0000
+    0:00:27    8515.0     14.80     190.6       0.0                              0.0000
+    0:00:27    8514.0     14.80     190.6       0.0                              0.0000
+    0:00:27    8506.0     14.80     190.6       0.0                              0.0000
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:28    8505.0     14.80     190.6       0.0                              0.0000
+    0:00:28    8505.0     14.80     190.6       0.0                              0.0000
+    0:00:28    8505.0     14.80     190.6       0.0                              0.0000
+    0:00:28    8505.0     14.80     190.6       0.0                              0.0000
+    0:00:28    8505.0     14.80     190.6       0.0                              0.0000
+    0:00:41    8938.0      1.00       9.1       0.0                              0.0000
+    0:00:41    8938.0      1.00       9.1       0.0                              0.0000
+    0:00:41    8938.0      1.00       9.1       0.0                              0.0000
+    0:00:41    8938.0      1.00       9.1       0.0                              0.0000
+    0:00:46    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:46    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:46    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:46    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:48    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:48    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:48    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:48    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:49    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:49    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:49    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:49    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9008.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:50    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:51    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:51    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:51    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:51    9009.0      0.00       0.0       0.0                              0.0000
+    0:00:51    8750.0      0.00       0.0       0.0                              0.0000
+    0:00:51    8750.0      0.00       0.0       0.0                              0.0000
+    0:00:51    8750.0      0.00       0.0       0.0                              0.0000
+    0:00:51    8750.0      0.00       0.0       0.0                              0.0000
+    0:00:51    8750.0      0.00       0.0       0.0                              0.0000
+    0:00:51    8750.0      0.00       0.0       0.0                              0.0000
+Loading db file '/home/s327033/HW1_project/pdt2002.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Warning: Main library 'pdt2002' does not specify the following unit required for power: 'Leakage Power'. (PWR-424)
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+# ------------------------------
+# Reports
+# ------------------------------
+redirect -file dc_out/report_design_${TOP}.rpt { report_design }
+redirect -file dc_out/report_qor_${TOP}.rpt    { report_qor }
+redirect -file dc_out/report_area_${TOP}.rpt   { report_area -hierarchy -nosplit }
+redirect -file dc_out/report_timing_${TOP}.rpt { report_timing -max_paths 20 -delay_type max -nosplit }
+redirect -file dc_out/report_power_${TOP}.rpt  { report_power -nosplit }
+# ------------------------------
+# Outputs
+# ------------------------------
+write -hierarchy -format verilog -output dc_out/${TOP}_synth.v
+Writing verilog file '/home/s327033/HW1_project/dc_out/mbist_csr_wrap_synth.v'.
+Warning: Verilog writer has added 4 nets to module mbist_csr_wrap using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+1
+write -hierarchy -format ddc     -output dc_out/${TOP}.ddc
+Writing ddc file 'dc_out/mbist_csr_wrap.ddc'.
+1
+write_sdc dc_out/${TOP}.sdc
+1
+quit
+
+Memory usage for this session 175 Mbytes.
+Memory usage for this session including child processes 175 Mbytes.
+CPU usage for this session 59 seconds ( 0.02 hours ).
+Elapsed time for this session 64 seconds ( 0.02 hours ).
+
+Thank you...
